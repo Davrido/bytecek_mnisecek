@@ -34,6 +34,8 @@
 .mp-orb svg{position:relative;width:40%;height:40%;fill:#f2fdff;filter:drop-shadow(0 0 5px rgba(120,230,255,.95))}
 .mp-orb.sm{width:46px;height:46px;box-shadow:0 0 0 2px rgba(200,242,255,.5),0 0 calc(6px + var(--beat)*16px) rgba(50,200,255,calc(.35 + var(--beat)*.6)),inset 0 -5px 10px rgba(90,225,255,.55)}
 .mp-orb.nav{width:40px;height:40px;background:radial-gradient(circle at 50% 118%,rgba(60,215,255,.75) 0%,rgba(14,90,170,.9) 40%,#041a38 80%)}
+.mp.armed .mp-mini .mp-orb{animation:armed 1.6s ease-in-out infinite}
+@keyframes armed{50%{box-shadow:0 0 0 2px rgba(220,248,255,.95),0 0 24px 4px rgba(50,200,255,1),inset 0 -5px 10px rgba(90,225,255,.55)}}
 .mp .i-pause{display:none}
 .mp.playing .i-play{display:none}
 .mp.playing .i-pause{display:block}
@@ -92,4 +94,4 @@
   .mp{left:24px;bottom:24px}
   .mp-mini-title{display:block}
 }
-@media (prefers-reduced-motion:reduce){ .mp-mini-title span{animation:none;padding-left:0} }
+@media (prefers-reduced-motion:reduce){ .mp-mini-title span{animation:none;padding-left:0} .mp.armed .mp-mini .mp-orb{animation:none} }

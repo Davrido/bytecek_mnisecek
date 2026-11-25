@@ -56,8 +56,10 @@
     setupAudio();
     if (ctx && ctx.state === "suspended") ctx.resume();
     var p = au.play(); if (p && p.catch) p.catch(function(){});
+    return p;
   }
-  function toggle(){ if (au.paused) start(); else au.pause(); }
+  var userPaused = false;
+  function toggle(){ if (au.paused) { userPaused = false; start(); } else { userPaused = true; au.pause(); } }
 
   $$(".js-mp-play").forEach(function(b){ b.addEventListener("click", toggle); });
   $(".js-mp-prev").addEventListener("click", function(){ if (au.currentTime > 3) au.currentTime = 0; else load(cur - 1, !au.paused); });
@@ -191,4 +193,25 @@
   }
   load(0, false);
   requestAnimationFrame(loop);
+
+  /* ===== autoplay: hned po načtení. Když ho prohlížeč zablokuje (zvuk bez interakce),
+     pustí se při prvním ťuknutí / kliknutí / klávese kdekoli na stránce. ===== */
+  var EVTS = ["pointerdown", "pointerup", "touchend", "keydown", "click"];
+  function disarm(){ mp.classList.remove("armed"); EVTS.forEach(function(t){ document.removeEventListener(t, onGesture, true); }); }
+  function onGesture(e){
+    if (e.type === "keydown" && (e.key === "Escape" || e.key === "Tab" || e.metaKey || e.ctrlKey || e.altKey)) return;
+    setupAudio(); if (ctx && ctx.state === "suspended") ctx.resume();
+    var onPlayBtn = e.target && e.target.closest && e.target.closest(".js-mp-play, .mp-list button");
+    if (!au.paused || userPaused || onPlayBtn) { disarm(); return; }
+    var p = start();
+    if (p && p.then) p.then(function(){ if (!au.paused) disarm(); }, function(){});
+    else if (!au.paused) disarm();
+  }
+  EVTS.forEach(function(t){ document.addEventListener(t, onGesture, true); });
+  (function autoplay(){
+    try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+    /* zatím bez Web Audio: uspaný AudioContext by hrál potichu; vizualizér se napojí při první interakci */
+    var p = au.play();
+    if (p && p.then) p.then(function(){}, function(){ if (au.paused) mp.classList.add("armed"); });
+  })();
 })();
