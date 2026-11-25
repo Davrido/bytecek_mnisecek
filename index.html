@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hledáme nájemníka do 1+kk 35 m² se zahradou · 8 000 Kč</title>
+<meta name="description" content="Pronájem 1+kk 35 m² se zahradou 60 m². Nájem 8 000 Kč + cca 3 000 Kč voda a utils. Nastěhování ideálně 15. 12. – 1. 1. Pet a gardener friendly, střešené parkovací místo.">
+<meta property="og:title" content="Hledáme nájemníka do 1+kk 35 m² se zahradou">
+<meta property="og:description" content="8k měsíc plus 3k utils. Zahrada 60 m², pergola, parkování. Můžeme být sousedi!!!">
+<meta property="og:image" content="img/obyvak.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#19a7e6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500..900&family=Nunito:ital,wght@0,400..900;1,400..900&family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/title.webp">
+<style>
+:root{
+  --ice:#f3f8fc; --ice2:#dbeaf6; --aqua:#19a7e6; --blue:#0d6cc2; --deep:#0b3f7a; --navy:#0a1f3d; --steel:#779bb8;
+  --lime:#8ee03c; --green:#3ca614;
+  --serif:"Cinzel", "Trajan Pro", Georgia, serif;
+  --sans:"Nunito", system-ui, sans-serif;
+  --px:"Pixelify Sans", ui-monospace, monospace;
+  --tiny:"Silkscreen", ui-monospace, monospace;
+  --lcd:"VT323", ui-monospace, monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:hidden}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--ice);color:var(--navy);font:500 17px/1.55 var(--sans)}
+img{max-width:100%}
+.wrap{position:relative;z-index:2;width:min(1100px,100%);margin-inline:auto;padding-inline:16px;overflow-x:clip}
+
+/* ===== pozadí: led (canvas), bubliny, zrno ===== */
+#frost{position:fixed;inset:0;z-index:0;width:100%;height:100vh;height:100lvh;image-rendering:pixelated;image-rendering:crisp-edges;display:block;
+  background:radial-gradient(120% 80% at 50% 40%,#fbfdff,#e6f1fa)}
+.bubbles{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.bubbles i{position:absolute;bottom:-160px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;opacity:.85;
+  background:
+    radial-gradient(circle at 32% 26%,#fff 0 7%,rgba(255,255,255,.55) 13%,rgba(255,255,255,0) 26%),
+    radial-gradient(circle at 70% 78%,rgba(255,255,255,.55) 0 6%,rgba(255,255,255,0) 18%),
+    radial-gradient(circle,rgba(190,235,255,.08) 0 52%,rgba(60,170,235,.38) 66%,rgba(255,255,255,.85) 70%,rgba(255,255,255,0) 72%);
+  animation:rise var(--d) linear infinite;animation-delay:var(--dl)}
+@keyframes rise{to{transform:translate3d(var(--sw),calc(-100vh - 220px),0)}}
+.grain{position:fixed;inset:-100%;z-index:70;pointer-events:none;opacity:.1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .04 0 0 0 0 .12 0 0 0 0 .24 0 0 0 2.6 -1.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain .9s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-4%)}60%{transform:translate(-4%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+/* ===== typografie ===== */
+.gold{--sx:.6;--fs:clamp(54px,18vw,150px);position:relative;display:block;margin:0;width:calc(100% / var(--sx));transform:scaleX(var(--sx));transform-origin:0 0;
+  font:800 var(--fs)/.95 var(--serif);text-transform:uppercase;letter-spacing:.005em;
+  color:transparent;-webkit-text-fill-color:transparent;
+  background-image:linear-gradient(100deg,transparent 40%,rgba(255,255,255,.95) 50%,transparent 60%),linear-gradient(180deg,#fffbe2 0%,#ffe485 15%,#f3c43c 35%,#b07a10 48.5%,#5e3a03 51.5%,#c98f1c 60%,#f6d264 78%,#fff2b5 100%);
+  background-size:300% .95em,100% .95em;background-repeat:repeat-y;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-stroke:1.3px #3a2804;
+  filter:drop-shadow(0 0 1.4px rgba(30,52,78,.95)) drop-shadow(0 0 5px rgba(40,66,92,.55)) drop-shadow(0 .09em .08em rgba(119,155,184,.75));
+  animation:shine 7s ease-in-out infinite}
+.gold.c{text-align:center}
+.gold.mid{--fs:clamp(40px,12vw,96px)}
+.gold.sm{--fs:clamp(30px,8.5vw,56px);-webkit-text-stroke:1px #3a2804;filter:drop-shadow(0 0 .8px rgba(30,52,78,.95)) drop-shadow(0 2px 1px rgba(119,155,184,.6))}
+@keyframes shine{0%,55%{background-position:160% 0,0 0}100%{background-position:-60% 0,0 0}}
+.pxl{display:inline-block;margin:0 0 14px;padding:5px 8px 4px;background:rgba(255,255,255,.85);border:1.5px solid var(--blue);box-shadow:3px 3px 0 var(--blue);
+  font:400 11px/1.2 var(--tiny);letter-spacing:.06em;text-transform:uppercase;color:var(--deep)}
+.lead{font:600 18px/1.6 var(--sans)}
+.muted{color:#3f5f80}
+
+/* ===== glossy aqua "gumdrop" tlačítka ===== */
+.gum{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.35em;
+  font:900 17px/1 var(--sans);color:#fff;text-decoration:none;white-space:nowrap;letter-spacing:.01em;
+  text-shadow:0 1px 0 rgba(0,45,100,.65),0 0 8px rgba(0,70,150,.45);
+  padding:.72em 1.25em .78em;border-radius:999px;border:1px solid rgba(4,70,130,.7);
+  background:linear-gradient(180deg,#9fe6ff 0%,#3bbcf3 46%,#0a83d3 54%,#2cb8f6 82%,#7fe0ff 100%);
+  box-shadow:0 0 0 3px rgba(255,255,255,.75),0 8px 18px rgba(10,80,160,.35),inset 0 -5px 10px rgba(170,245,255,.75),inset 0 1px 0 rgba(255,255,255,.7)}
+.gum::before{content:"";position:absolute;z-index:-1;left:7%;right:7%;top:4%;height:46%;border-radius:999px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.12))}
+.gum::after{content:"";position:absolute;z-index:-1;top:-20%;bottom:-20%;width:30%;left:-40%;transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);animation:sweep 4.5s ease-in-out infinite}
+@keyframes sweep{0%,60%{left:-40%}100%{left:130%}}
+.gum.green{border-color:rgba(20,90,10,.7);text-shadow:0 1px 0 rgba(20,80,0,.7),0 0 8px rgba(30,100,0,.4);
+  background:linear-gradient(180deg,#e2ffb0 0%,#9be64a 46%,#46b414 54%,#7fd93a 82%,#c8ff86 100%);
+  box-shadow:0 0 0 3px rgba(255,255,255,.75),0 8px 18px rgba(40,120,10,.3),inset 0 -5px 10px rgba(220,255,170,.75),inset 0 1px 0 rgba(255,255,255,.7)}
+.gum.sm{font-size:14px}
+.gum.xl{font-size:clamp(42px,13vw,104px);padding:.36em .72em .42em;box-shadow:0 0 0 5px rgba(255,255,255,.8),0 0 0 6px rgba(13,108,194,.35),0 18px 40px rgba(10,80,160,.4),inset 0 -10px 22px rgba(170,245,255,.8),inset 0 2px 0 rgba(255,255,255,.8)}
+a.gum:hover,a.gum:focus-visible{filter:brightness(1.08) saturate(1.1)}
+a.gum:active{transform:translateY(1px)}
+
+/* ===== sklo (aero) a LCD ===== */
+.glass{position:relative;border-radius:22px;padding:22px 18px;
+  background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(226,242,255,.6));
+  -webkit-backdrop-filter:blur(10px) saturate(1.4);backdrop-filter:blur(10px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 0 0 1px rgba(13,108,194,.28),0 16px 40px rgba(13,108,194,.22),inset 0 -24px 40px rgba(160,210,245,.28)}
+.glass::before{content:"";position:absolute;left:1px;right:1px;top:1px;height:44%;border-radius:21px 21px 60% 60%/21px 21px 22px 22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,0));pointer-events:none}
+.glass>*{position:relative}
+.lcd{position:relative;border-radius:18px;padding:16px 14px;overflow:hidden;
+  background:linear-gradient(180deg,#14406b 0%,#081d36 52%,#04111f 100%);border:1px solid #0b3f7a;
+  box-shadow:0 0 0 3px rgba(255,255,255,.8),0 0 0 4px rgba(13,108,194,.45),0 16px 34px rgba(10,50,100,.35),inset 0 0 34px rgba(25,167,230,.2);
+  color:#aef4ff;font:400 22px/1.15 var(--lcd);text-shadow:0 0 6px rgba(80,220,255,.7)}
+.lcd::before{content:"";position:absolute;left:0;right:0;top:0;height:38%;background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,0));pointer-events:none}
+.lcd::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px);pointer-events:none}
+
+/* ===== fotky: led + izolepa + pixelový reveal ===== */
+.ph{position:relative;margin:0;transform:rotate(var(--r,0deg))}
+.ph-btn{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+.ph-btn::before{content:"";position:absolute;inset:0;background:var(--tiny) center/100% 100% no-repeat;image-rendering:pixelated;transition:opacity .9s steps(6)}
+.ph-btn img{position:relative;display:block;width:100%;height:auto;opacity:0;transition:opacity .9s steps(6),transform .35s}
+.ph.in.ok .ph-btn img{opacity:1}
+.ph.in.ok .ph-btn::before{opacity:0}
+.ph-btn:hover img{transform:scale(1.012)}
+.ph-btn:focus-visible{outline:3px solid var(--aqua);outline-offset:-4%}
+.bleed{width:calc(100% / (1 - 2 * var(--mxf)));margin-left:calc(-100% * var(--mxf) / (1 - 2 * var(--mxf)))}
+.cap{position:absolute;z-index:5;left:calc(var(--mx) + 10px);bottom:calc(var(--my) - 13px);padding:5px 8px 4px;
+  background:linear-gradient(180deg,#fff,#dff1fc);border:1.5px solid var(--blue);box-shadow:3px 3px 0 var(--blue);
+  font:400 11px/1.2 var(--tiny);letter-spacing:.06em;text-transform:uppercase;color:var(--deep);pointer-events:none}
+.cap.r{left:auto;right:calc(var(--mx) + 10px)}
+.cap-top .cap{bottom:auto;top:calc(var(--my) + 14px)}
+.tape{position:absolute;z-index:6;width:96px;height:26px;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 6px,rgba(255,255,255,.18) 6px 7px),linear-gradient(180deg,rgba(236,247,255,.92),rgba(190,224,248,.72) 55%,rgba(236,247,255,.88));
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);filter:drop-shadow(0 1px 2px rgba(13,60,120,.45));
+  clip-path:polygon(3% 0,97% 0,100% 16%,96% 33%,100% 50%,96% 67%,100% 84%,97% 100%,3% 100%,0 84%,4% 67%,0 50%,4% 33%,0 16%)}
+.t-tl{top:calc(var(--my) - 12px);left:calc(var(--mx) - 34px);transform:rotate(-36deg)}
+.t-tr{top:calc(var(--my) - 12px);right:calc(var(--mx) - 34px);transform:rotate(34deg)}
+.t-tc{top:calc(var(--my) - 15px);left:50%;transform:translateX(-50%) rotate(-3deg)}
+.t-br{bottom:calc(var(--my) - 12px);right:calc(var(--mx) - 34px);transform:rotate(-33deg)}
+.t-bl{bottom:calc(var(--my) - 12px);left:calc(var(--mx) - 34px);transform:rotate(31deg)}
+
+/* ===== ticker ===== */
+.ticker{position:relative;z-index:3;overflow:hidden;white-space:nowrap;color:#fff;font:500 15px/1 var(--px);letter-spacing:.05em;text-transform:uppercase;
+  background:linear-gradient(180deg,#8fdcff 0%,#28aaea 48%,#0b84d4 52%,#33b8f3 100%);border-bottom:1px solid #075a9a;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75),0 3px 12px rgba(13,108,194,.35);text-shadow:0 1px 0 rgba(0,50,110,.7)}
+.ticker-track{display:inline-flex;padding:10px 0 9px;animation:tick 42s linear infinite}
+.ticker-track span{padding-right:1.4em}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ===== hero ===== */
+.hero{padding-top:18px;padding-bottom:20px}
+.title{margin:6px 0 0;line-height:0}
+.title img{display:block;width:calc(100% + 20px);max-width:none;margin-left:-10px;height:auto}
+.hero-grid{display:grid;margin-top:-4px}
+.hero .ph{--r:-1.8deg}
+.price{position:relative;z-index:6;display:block;width:68%;max-width:420px;height:auto;margin:-22% 0 0 auto;transform:rotate(-2.5deg)}
+.hero-side{position:relative;z-index:6}
+.pills{display:flex;flex-wrap:wrap;gap:14px 12px;margin-top:6px}
+.movein{display:inline-block;margin-top:24px;padding:12px 18px 10px;transform:rotate(1.6deg)}
+.movein small{display:block;font:400 11px/1.2 var(--tiny);letter-spacing:.08em;text-transform:uppercase;color:#7fe7ff}
+.movein b{display:block;font:400 44px/1 var(--lcd);font-weight:400;color:#d8fbff;letter-spacing:.02em;white-space:nowrap}
+.scroll{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font:500 14px/1 var(--px);color:var(--deep);text-decoration:none;text-shadow:0 0 6px #fff,0 0 12px #fff}
+.scroll i{display:inline-block;width:12px;height:12px;background:var(--blue);clip-path:polygon(0 0,100% 0,100% 34%,66% 34%,66% 67%,34% 67%,34% 34%,0 34%);clip-path:polygon(0 0,100% 0,50% 100%);animation:bob 1.2s steps(2) infinite}
+@keyframes bob{50%{transform:translateY(4px)}}
+
+/* ===== úvod ===== */
+.intro{padding-top:54px}
+.intro .glass{max-width:620px}
+.intro .gold{margin-top:30px}
+
+/* ===== koláž ===== */
+.collage{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));padding-top:46px}
+.collage .ph{align-self:start}
+.c-kuchyn{grid-column:1/9;grid-row:1;--r:-2.4deg;z-index:2}
+.c-okno{grid-column:2/13;grid-row:2;margin-top:-26%;--r:1.8deg;z-index:3}
+.c-koupelna{grid-column:1/8;grid-row:3;margin-top:-6%;--r:2.2deg;z-index:2}
+.c-chodba{grid-column:6/13;grid-row:3;margin-top:30%;--r:-2deg;z-index:3}
+.c-satna{grid-column:2/11;grid-row:4;margin-top:-14%;--r:-1.2deg;z-index:4}
+.hint{margin:18px 0 0;text-align:right;font:500 13px/1.3 var(--px);color:var(--deep);text-shadow:0 0 6px #fff,0 0 12px #fff}
+
+/* ===== zahrada ===== */
+.garden{padding-top:80px}
+.g-ph{position:relative;margin-top:-6px}
+.g-ph .ph{--r:1.2deg}
+.burst-w{position:absolute;z-index:7;right:-2px;top:-30px;width:clamp(124px,36vw,200px);filter:drop-shadow(0 8px 10px rgba(20,90,10,.35));animation:wob 5s ease-in-out infinite}
+.burst{display:grid;place-items:center;aspect-ratio:1;text-align:center;transform:rotate(-12deg);padding:18%;
+  clip-path:polygon(50.0% 0.0%,56.0% 8.4%,64.1% 2.0%,67.4% 11.8%,77.0% 7.9%,77.5% 18.3%,87.8% 17.3%,85.3% 27.3%,95.5% 29.2%,90.3% 38.2%,99.5% 42.9%,92.0% 50.0%,99.5% 57.1%,90.3% 61.8%,95.5% 70.8%,85.3% 72.7%,87.8% 82.7%,77.5% 81.7%,77.0% 92.1%,67.4% 88.2%,64.1% 98.0%,56.0% 91.6%,50.0% 100.0%,44.0% 91.6%,35.9% 98.0%,32.6% 88.2%,23.0% 92.1%,22.5% 81.7%,12.2% 82.7%,14.7% 72.7%,4.5% 70.8%,9.7% 61.8%,0.5% 57.1%,8.0% 50.0%,0.5% 42.9%,9.7% 38.2%,4.5% 29.2%,14.7% 27.3%,12.2% 17.3%,22.5% 18.3%,23.0% 7.9%,32.6% 11.8%,35.9% 2.0%,44.0% 8.4%);
+  background:radial-gradient(circle at 36% 28%,#f6ffdc 0 6%,#c2f56a 24%,#5fc81f 58%,#2a8a0c 100%);
+  font:900 clamp(13px,3.7vw,19px)/1.02 var(--sans);color:#fff;text-transform:uppercase;text-shadow:0 1px 0 #1d6a06,0 0 6px rgba(20,90,0,.6);position:relative}
+.burst::before{content:"";position:absolute;left:22%;right:22%;top:14%;height:30%;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,0))}
+.burst span{position:relative}
+@keyframes wob{50%{transform:rotate(6deg) scale(1.04)}}
+.g-notes{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+
+/* ===== co zůstává ===== */
+.stays{padding-top:84px}
+.icons{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
+.icons li{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;font:800 16px/1.1 var(--sans)}
+.tile{position:relative;display:grid;place-items:center;width:84px;height:84px;border-radius:22px;
+  background:linear-gradient(180deg,#ffffff 0%,#e4f4ff 48%,#b9e2fb 52%,#e6f7ff 100%);border:1px solid rgba(13,108,194,.45);
+  box-shadow:0 0 0 3px rgba(255,255,255,.8),0 8px 16px rgba(13,108,194,.25),inset 0 -6px 12px rgba(120,200,245,.35)}
+.tile::before{content:"";position:absolute;left:8%;right:8%;top:5%;height:44%;border-radius:18px 18px 40% 40%;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,0))}
+.tile svg{position:relative;width:56px;height:56px}
+.stays-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 18px;margin-top:26px}
+
+/* ===== prachy ===== */
+.money{padding-top:84px}
+.calc{max-width:440px;transform:rotate(-1deg)}
+.calc .row{display:flex;align-items:baseline;gap:8px;font-size:24px}
+.calc .row i{flex:1;min-width:12px;border-bottom:2px dotted rgba(174,244,255,.55);transform:translateY(-6px)}
+.calc .row b{font-weight:400;white-space:nowrap}
+.calc .head{font:400 12px/1 var(--tiny);letter-spacing:.1em;text-transform:uppercase;color:#7fe7ff;margin-bottom:12px}
+.calc .note{margin:2px 0 8px;font:400 18px/1.15 var(--lcd);color:#7fd6ea}
+.calc .tot{margin-top:12px;padding-top:10px;border-top:2px dashed rgba(174,244,255,.5);color:#fff;font-size:26px}
+.calc .tot b{color:#d6ff8a;text-shadow:0 0 8px rgba(190,255,100,.7)}
+.money .gold{margin-bottom:26px}
+
+/* ===== lokalita ===== */
+.where{padding-top:96px}
+.where .pxl{margin-top:16px}
+.nums{list-style:none;margin:16px 0 0;padding:0}
+.nums li{display:flex;align-items:center;gap:14px;padding:10px 0}
+.nums b{flex:none;min-width:2.2em;font:400 clamp(66px,20vw,124px)/.8 var(--lcd);
+  color:transparent;-webkit-text-fill-color:transparent;background:linear-gradient(180deg,#c6f3ff 0%,#3cc0f5 46%,#0b78c8 54%,#5fd3ff 100%);-webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(3px 3px 0 var(--navy))}
+.nums span{font:800 16px/1.3 var(--sans);text-shadow:0 0 6px #fff,0 0 12px #fff}
+.board{margin-top:26px}
+.board-head{position:relative;display:flex;flex-wrap:wrap;gap:0 8px;font:400 12px/1.5 var(--tiny);letter-spacing:.05em;text-transform:uppercase;color:#7fe7ff;text-shadow:none}
+.board table{position:relative;width:100%;margin-top:10px;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.board th{padding:4px 3px;text-align:left;font:400 10px/1 var(--tiny);letter-spacing:.06em;text-transform:uppercase;color:#5fb8d4;border-bottom:1px solid rgba(127,231,255,.3);text-shadow:none}
+.board td{padding:5px 3px 3px;font-size:25px;line-height:1;white-space:nowrap;border-bottom:1px dashed rgba(127,231,255,.15)}
+.board td:last-child,.board th:last-child{text-align:right}
+.board .ln{display:inline-block;padding:0 5px;border:1px solid currentColor;border-radius:4px;font-size:21px}
+.board tr.fast td{color:#d6ff8a;text-shadow:0 0 7px rgba(190,255,100,.75)}
+.board-foot{position:relative;margin:10px 0 0;font:400 19px/1.15 var(--lcd);color:#7fd6ea}
+.board-foot b{color:#d6ff8a;font-weight:400}
+.around{margin-top:56px}
+.around-line{margin:0;font:900 clamp(27px,8.4vw,64px)/1.04 var(--sans);text-transform:uppercase;letter-spacing:-.01em;color:var(--navy);text-shadow:0 0 8px #fff,0 0 18px #fff}
+.around-line .it{white-space:nowrap}
+.around-line .p{color:var(--aqua);text-shadow:0 0 8px #fff}
+.around-line .mini{display:inline-block;vertical-align:.55em;margin-left:.12em;font:400 10px/1.2 var(--tiny);letter-spacing:.04em;color:var(--green);text-transform:uppercase}
+.quote{position:relative;margin:64px 0 0;max-width:600px}
+.quote .glass{padding:30px 20px 22px}
+.quote .gold{--fs:clamp(30px,9vw,46px);margin-bottom:10px}
+.quote p{margin:0;font:600 17px/1.6 var(--sans)}
+.quote footer{margin-top:14px;font:500 13px/1.3 var(--px);color:var(--deep)}
+.quote .tape{top:-12px}
+
+/* ===== DM ===== */
+.cta{padding-top:110px;padding-bottom:30px}
+.cta-sub{margin:28px 0 0;max-width:520px;font:600 17px/1.55 var(--sans);text-shadow:0 0 6px #fff,0 0 12px #fff}
+.phone{margin:12px 0 0;font:700 15px/1.4 var(--sans);color:#3f5f80;text-shadow:0 0 6px #fff}
+.phone a{color:var(--deep)}
+.glassbtn{margin-top:28px;cursor:pointer;font:800 15px/1.2 var(--sans);color:var(--deep);padding:13px 18px;border-radius:999px;border:1px solid rgba(13,108,194,.45);
+  background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(214,236,252,.8));box-shadow:0 0 0 3px rgba(255,255,255,.7),0 8px 18px rgba(13,108,194,.2)}
+.glassbtn:hover{background:#fff}
+.foot{padding-top:50px;padding-bottom:130px;font:400 11px/1.6 var(--tiny);letter-spacing:.05em;text-transform:uppercase;color:var(--deep);text-shadow:0 0 6px #fff}
+.foot .pxbar{height:10px;width:220px;margin-bottom:14px;background:
+  linear-gradient(90deg,var(--blue) 0 10%,transparent 10% 13%,var(--aqua) 13% 31%,transparent 31% 34%,var(--blue) 34% 38%,transparent 38% 47%,var(--aqua) 47% 70%,transparent 70% 74%,var(--deep) 74% 100%)}
+
+/* ===== přilepené DM ===== */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:80;display:flex;gap:10px;padding:12px 14px calc(14px + env(safe-area-inset-bottom));
+  background:linear-gradient(rgba(243,248,252,0),rgba(243,248,252,.92) 38%);transform:translateY(120%);transition:transform .3s}
+.dock.on{transform:none}
+.dock .gum{flex:1;font-size:20px}
+.dock .glassbtn{margin:0;flex:none;width:56px;padding:0;font-size:18px}
+
+/* ===== lightbox ===== */
+.lb{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(6,24,46,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.lb[hidden]{display:none}
+.lb img{max-width:94vw;max-height:80vh;object-fit:contain;border-radius:6px;box-shadow:0 0 0 3px rgba(255,255,255,.85),0 0 40px rgba(25,167,230,.7)}
+.lb button{position:absolute;width:52px;height:52px;border-radius:50%;cursor:pointer;font:900 22px/1 var(--sans);color:#fff;border:1px solid rgba(4,70,130,.7);
+  background:linear-gradient(180deg,#9fe6ff 0%,#3bbcf3 46%,#0a83d3 54%,#2cb8f6 100%);box-shadow:0 0 0 2px rgba(255,255,255,.7),inset 0 -4px 8px rgba(170,245,255,.7);text-shadow:0 1px 0 rgba(0,45,100,.6)}
+.lb .x{top:calc(12px + env(safe-area-inset-top));right:12px}
+.lb .prev{left:10px;top:50%;margin-top:-26px}
+.lb .next{right:10px;top:50%;margin-top:-26px}
+.lb .lb-cap{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom));margin:0;text-align:center;font:400 13px/1 var(--tiny);letter-spacing:.08em;text-transform:uppercase;color:#bff3ff}
+
+/* ===== desktop ===== */
+@media (min-width:900px){
+  .wrap{padding-inline:32px}
+  .hero-grid{grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:0 36px;align-items:center;margin-top:10px}
+  .hero .ph.bleed{width:auto;margin-left:0}
+  .price{width:100%;margin:0}
+  .pills{margin-top:18px}
+  .intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+  .intro .gold{margin-top:0}
+  .collage{padding-top:70px}
+  .c-kuchyn{grid-column:1/5;grid-row:1/3;margin-top:0}
+  .c-okno{grid-column:4/10;grid-row:1;margin-top:6%}
+  .c-koupelna{grid-column:9/13;grid-row:1/3;margin-top:-4%}
+  .c-chodba{grid-column:4/7;grid-row:2;margin-top:-8%}
+  .c-satna{grid-column:6/10;grid-row:2;margin-top:-2%}
+  .garden-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,3fr);gap:30px;align-items:end}
+  .g-ph .ph.bleed{width:auto;margin-left:0}
+  .burst-w{right:-30px;top:-40px}
+  .ss-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:center}
+  .icons{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .money{padding-top:0}
+  .where-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px;align-items:start}
+  .board{margin-top:0}
+  .dock{left:auto;right:24px;bottom:24px;padding:0;background:none}
+  .dock .gum{flex:none;padding:.72em 1.5em .78em}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker-track,.grain,.gold,.gum::after,.burst-w,.scroll i{animation:none}
+  .bubbles{display:none}
+  html{scroll-behavior:auto}
+}
+</style>
+<noscript><style>.ph-btn img{opacity:1}.ph-btn::before{display:none}.bubbles{display:none}</style></noscript>
+</head>
+<body>
+<canvas id="frost" aria-hidden="true"></canvas>
+<div class="bubbles" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+  <span>pronájem / 1+kk 35 m² / zahrada 60 m² / 8k měsíc + 3k utils / pergola / střešené parkovací místo / pet + gardener friendly / nastěhování 15. 12. → 1. 1. /</span>
+  <span>pronájem / 1+kk 35 m² / zahrada 60 m² / 8k měsíc + 3k utils / pergola / střešené parkovací místo / pet + gardener friendly / nastěhování 15. 12. → 1. 1. /</span>
+</div></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero wrap">
+  <h1 class="title"><img src="img/title.webp" width="1047" height="208" alt="Hledáme nájemníka do 1+kk 35 m²"></h1>
+  <div class="hero-grid">
+    <figure class="ph bleed" style="--mx:6.03%;--my:8.53%;--mxf:0.0603;--tiny:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAARCAYAAADHeGwwAAAEnklEQVR42gXBS29cZx3A4d97O2fOOTOesedij2NsJ01TqlZpK1hEsEGwacUWlnwRxJ7vwmdghcSuUkGpWjV1cBxfMr7MeO7n+v5fnkf9+R/fR/GC4yjWLYcxjYQQtBWHN1UN2oSg8F5brWvR2ksI1BXKai1eqcgaX+O91Uo5jKlDo7XYgPbbq7m9sN1cn3bs8u+7snwWW6MxqBCCEESJ9YqmCSBeN+igCATRQghSiRbfhPW8FECNhnsqgPI+6Lyq/MqNzvrZ8K9WCFk9u3h+8+afLyNn0UYDQlXmbDdLpK6wGhJniJ3BadAEtkXBcp1z/mFGmrY4/cNv0EoxnU25ub7FfvoniccDZ8UrZUBXdcGmFFCaQa9DXhYU6w3L5ZI8z6nrGqMVvZ02w27C+fUN001FmVe8fPGU1cM984c78nxL8JA4rUUrZVsmhDiK0GlKCEKUZJwcHZLFESfjfZaLR4p8S1kWrLZr5qsNZd1QbJZQBvo7PY73R8zfn3N1eY3Xhsq1CKuNJEdgRSs1Wyz5+fUP7HbbfPLJ50Q2RipPcJrYtXBK433D3WzKdrPF+i5R2qbdbTEcjRgdHTH/8Q4dFNvGcLUuoAxWN3VkqWHyuFbvPjxwefVAkgwYj0Zc3d5zfv6WuqpYbzYYa5muH3kyHhC3uxTzNY+rFfOi5rPPviBJ26RZB6Nb3PslKKhrsNqEIJ1RCB9/TbaseVeOOHjM2T18xvdnF0xuJxhjGI8HRN6TtPe4vp3jXIvHRc7N3S21OBJn8cWKbbVEMNhIqZaLjS0bEb9Zi1vc0W4Fqvmc+XSP92dvaCUpVePpZW2S9g5fPTtF+4oFjp4zvL+4Zr0ucHGCtQ58RfCCsW0MhNCUYkUrpaqtUtMfmUqNUeB++TtuJx+YPUzoD4ZU+YaHu3sUmu5Oh2G/jw2BNM7Y66f0hyNk0SHS4FTAWkccOdHOeOuAFx8dUZ8ecfH2LU1dUeYbNsspLQ3FZo3WmuvLC4KyJHFMnGVkaZuT0xOygxHjgyEPb7akTrGsoFEe7bQCsEERvTgZm8HX33B/fcO33/3ApEqJsh6s7jA0NKKovGd4/DHduOK012LtIvpPjnBG2Ot2mAVP7AwiNfN5iRKtRCtlFcZf3C2lU1U8e/qEar2kNTjmty9PyN/8i+fHByxKxevX/6FznLFXCU/3Yt4VNR8NY/ZGQ/o7GT/7GghUHrRodDCixQZrlcj/rm7D9r//5qQbIETEtubVq29o/+o59Yfv2M7ueJoc0UpztDL0Bh26iznzjSLYHOO3SLXFB4jSlF/0R2ROsZIq2KCseBG5elgweTdh0IlxLibN2nz+61fMykN++umMyAvPu1MibTHxLp1Y00sdGKGZnWEiGJ/ucxgnpP0nFPtZ+FZCsJFU62z38PzF7/8S5dt16FjEJam5yTJu3sdqnQ9CMfojxpcqGzRNyzrmSaadEWKnlLOmjv3All92iQgqBE+tjF/Y/XNV2sKyuLzqHpz8rbM77lglAjVN0BpAxNg0801bK+WN15eKOjRGtAlWBa1DLaLyptaliyp2lFZKWWMkKCO+CitvJhf/B5U6bZp+tN3kAAAAAElFTkSuQmCC)"><button class="ph-btn" type="button" data-full="img/obyvak.jpg" data-cap="obývák" aria-label="Zvětšit fotku: obývák"><img src="img/obyvak-f.webp" width="1592" height="1125" alt="Obývák s vyvýšenou postelí" fetchpriority="high" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tl"></span><span class="tape t-br"></span><figcaption class="cap">obývák</figcaption></figure>
+    <div class="hero-side">
+      <img class="price" src="img/price.webp" width="451" height="317" alt="8k měsíc plus 3k utils">
+      <div class="pills">
+        <span class="gum sm">+ zahrada 60 m²</span>
+        <span class="gum sm green">pet + gardener friendly</span>
+      </div>
+      <div class="lcd movein">
+        <small>nastěhování ideálně</small>
+        <b>15.12. → 1.1.</b>
+      </div>
+    </div>
+  </div>
+  <a class="scroll" href="#intro"><i></i> všechny detaily níž</a>
+</header>
+
+<!-- ================= ÚVOD ================= -->
+<section id="intro" class="intro wrap">
+  <div class="glass">
+    <p class="pxl">zdravíčko</p>
+    <p class="lead" style="margin:0">Hledáme za nás se ženou náhradu do 35&nbsp;m² 1+kk bytu se 60&nbsp;m² zahradou, stěhujeme se totiž do většího o&nbsp;byt vedle</p>
+  </div>
+  <h2 class="gold">Můžeme být sousedi!!!</h2>
+</section>
+
+<!-- ================= KOLÁŽ ================= -->
+<section class="wrap" aria-label="Fotky bytu">
+  <div class="collage">
+    <figure class="ph c-kuchyn cap-top" style="--mx:6.05%;--my:4.68%;--mxf:0.0605;--tiny:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAfCAYAAAD9cg1AAAAHqklEQVR42jWVyY5d13VA1977nHPvfX31LJIiRdESQwuQnQS2hfxCxvmMDDz2B+RfAgSeZZRJJoEF24BlC7ZINRTpUpFVRVbVq3rNbU7jgZwvWFjAApb8239+EXY24b0hlYlVSM4p1mouFlWhtEXM2tjmRp2L2RUrQw+wjSJOB2kqH7pYcjaN2zY7LVGt8h24ddts37i9zh7tu8v/CPHNo9KKfXVyWjZDL6WIzJt6aMz8hJJVTUTJkmOv5iznZEMmnlyt/TamoiKCiKQMQYjT4yfP9o8/+JUzIbj1949vv/ivT25Xt2zfveVq+Y4Hx/fw6rg4v6B2inOGN0UEVBUKxJT5/vtzLlYtOSeqIty2kclkytN//aWF/QeNozifi2jlHfV8TLe5prY579/Z593rM/r1EgycKUkVM8N5h6iSY+K9RqCLVCacnN+QVgOxKOSMZlWXNcrZ1TuG01fURA5HFUvnefn6jNOTE6oYkVyQrIgpkFFvmAh93zOrHE/251zebonbTN8X+tXAu9tBpongUkS6vtfSrjnYndLFnpSNxWzOq3LCm+sld5ua4JWRd+SciDEiAqUUUEfMcHXTkYaCmFKNA03jxQLiSCUfz6aFvT1iiXxz9hapZkymcyof2A6ZC1rq4skJaq+YFUQVEWGbEpebgashIo1RJ+HO7oLpKOhERVzPwKSpi8wXtJs115uW4/kxz777FkmZ48WU625Dux5YxgHvCr52BK0xcwwp8+ZmzTZltHL89PGH/PzTfyH/6H09idkcMJycvU3x2XMmleJTZBh6kMA3Z6fMXGEWAhc3G9oh4YGqh1JFYunRUigxgcDhdMynP3nK4b17LCejpFt61w8QuoHV1ZI3mxXiHOtNS0wD7x3scnl9QddmpI/UWhBAhp6h60kpo4B3RrWY8PDggNo3OB8QJLYpRgewBl5ueyr1KMZEoOu2tJsltXO8XW1QBc1CUfAZnACACtRD4t50yr0Hj6l29whVjTeR2kpxo2CWfFBHYN0viRmGVcViOsOlwuvzN0iC6KCJglWCywWfoGRBpSAFxvWY+c4+LtSEqqHyvkhR1ViKt6I2ny8YpKJ3yny+R12P2J1PKN4hCloZQy1IAm+KU8EbeAVvEIJnOp1QVTWhqiliVpzzLmWNlWlJKWJBabzhtNDljiBbjg/H2NjxbtNSvCPdDvgBnAlCwchkMUZNzWw2paprfKhwzqmVobhGRQYGtuUGkUQpxoP7jxg1xp//8hnBCc2e5+HDI5wJpeup+gy5kHKmcsps3nD3g/tMphWhqnDOIWqxTRLdUCyV0g8lQ7fN2Hwgpw2j0QH3DmY8mEz4x0+f0K9anjw4gKHFVSPEVagTfFVR147zc+HidswyBZxzWBE1FXFStmk3TOT7PkBZ01SB2+6aejOi5EIVHE/u7/H8D9/x589PUTVCaAkh4ILRVOCk52K9i+7ewZzHnIOIBcDVdeM6LZZCxLeBwC5PPvpn7hwc8yJd0Iy2qHm6LrJcF5wDHxNsek4utxwtei5eX2Ez4ccHATOPmcMVy53krH3M5sXholHEMV0EEPj8y//lr5cnmNUU/x59UgBGdUXTNFioKX7Cn16u+e3XLZdbw1yN/r+BapKi6nLM2QWXXFMx9gMaEtPxDru7P+X/rr7mq/NzFp89ZzkcMKQNIXu0gxwjDT335wGbDxztBLqsuGCoGiaUEnN2AELGa6beT0zGO6iD69VLnu495Or0jN99ccE/fPJPfPnHz7l6foFtlywsc7qOPH7/gLUcsO2UVBxBHaqKqKqrRLQaWRo5x7gRvK+5uVEWs0OePv4Urca0RXh58ZYe4+xyyZcvTnj1+oLbWLi43rC9WvPg419gOw8RMUwNRAEyBFwaSmhT9LEupF6pZiNefPcn7t85opixSi3rjWcyGTNsb2lXS5ogeGeYMwR4+vEnzPYOWd1uEDVEhFSwlDunXRlKUC3SZs5erFldr1nMxlwsT7g7ucM8TSE7Lt6cs20jIQTGdeCwStyrIk1d4+sJ9WjyA1AVRDERqcSLo2jqe7B+yoP9OU8fPeZnH/+cxd37fPE/v6b2jo8OZ4y6a37x4THt3Ro3tCxcpK0L01HDZDRCRRAyP7wUcibnMvSuxJwTmnaO7nJYVZTU8fvPfsN09wjdbEjdwItnv6ecPueD+wseTj3bLjH0mcoLSib1PSkmVB0F2GxWlDKOgiW3Wzs3yRN3+OFHHNw5Ynl7ybvLc7755hlP7++z3ayJQ8e6NW5ujaF39H2kUIh5QFQpahQANUQMFyqkFXE14gbg8GAvP9z/CZXLzMbCq9Lz7tuv6NcVm/WGxaRisRjhRx4UvDmgkCj4OmDOIaKoyt8TdaDih0Ea16bsQn9l4eYPDNsb+nVHMxiPdiBurlA1jo72OT5e4CxDTnivmDNCGxnt7uCqClFDzSP2Q6Z9hFVXivNmy7Nh/lzHP9PpQZUrVQ6E0v448teztUz2L2069rlMmtyVjJQo2ZyaaR6GWFajRf42HgrJ/JCnyQYrJWl62+rXjaWV/Pt/P6/Wp+l9sbgfjFKL5UFz7rfZ8JD6pMFKD9AOqs5bFitOsysw0OVSPFDETEpS5/0gJaWOfDPk+au/AWvB0Ox3qo8+AAAAAElFTkSuQmCC)"><button class="ph-btn" type="button" data-full="img/kuchyn.jpg" data-cap="kuchyň" aria-label="Zvětšit fotku: kuchyň"><img src="img/kuchyn-f.webp" width="1024" height="1324" alt="Kuchyň" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tc"></span><figcaption class="cap">kuchyň</figcaption></figure>
+    <figure class="ph c-okno" style="--mx:6.08%;--my:8.59%;--mxf:0.0608;--tiny:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAARCAYAAADHeGwwAAAEt0lEQVR42gXByW5kVx3A4d//nHOHmqvscnsIbvfAEBGk0AQEQkgRm6jFBiGRHWtegjUPwSuwQWLFGhIBkSOSoJCkPbVnd5Wn8r237nQGvk8+/PNJJ12UTxBJo8jpyMTKeacaF7zyzkaR0hqlXRCltLe1D6GuvRnE2jtPaKxtE22CV1a8iyXCaadNSGJdpFq/Nt1iuUN58cfV5s13YyNERosKIQSRoLQOsdNitJbGeWmbNizLRpa1kzgyvtvvUVrtHx4eAtaJSBB0hEgIbrJ9mHUf/cEYscPl3fF3sld/eWeoHRYhBI8SQRAKAk3rWZY1KkCcpAyGY0bTdQayhY67mNWUh7zkqy8+563H22x8a5uw3ZdP52FgICLWEs7mZzwZ9SnzktZaRoMh3lrKZUFeWeK0x+ajCTrpoaIOcWfEy1//hsnKhOFwyN3tHR999BYfvPyAJEn4+36m/z27UiaNlF64Jhr3eyRJwsPtHc42ONcniiKMMZhYs7I2ZbAy5f1f/ZbBeMr+V//j6befsSyWWO9xzhFFGh1FVE1LXlYECd40zkoUGyaTKeNOjBJDnuUMBgOaugYRbAjEScL00Tora1NC0DR1Sd20NNbSOkee5yzzjOwh5/D0gqtrLRFgjEhr4th3en2SNGakDFHSwYjQNi3egw9CbDRpJ8V7S1lWzGbnXN/ekMYJVVlxv7inyO55M5vz6vCYPN4UpbrGOO/Nw7IQuyzYGK9CUBCgtY4AIKC1IOLRWtE0LfeLDIdm/+qauC0RUZyfX7JoA7unM0qlER05RFoD0EvSECcdok4fpRSx0dzeZzSNxYZASIWqriF4iiZwfjbj+vyCL//1D+anh7z7wxdcXlwQgqK5OaFa1hSjcfBOi6ka71aSnkyn28yv3nCw9w11XZEkHdoy4/jqmtwJ4jq8Yx1Hx+ccvPqavd1POPrPp7xxgdO9r0m1ZTRc5+Zvf6UzWUf/ZBjC9G1vTKx0dlWFo90vmHYVW+sb3Nxc4+oll7f33GYVcW9M0cDh2SUH//wvk+kqWy9+RBwnbAUYpDGqLVgULYdvbmF2z8azhU7WlDa0knowvW4HFSuSwYgoy5nPrrhbZNhohB4/ZX92TXb/Cf3hiGWZQ4DR2hYqSQnasT5Zw/uccvUJ02FKPOhJsF6bJApelHfTpCK/u6SpDN1qydNBzU63y3lteP7eM7Yf/5Ljgz1eH5+QFxnFsuL+5obuYMyZbSk2V2gk5er8BOOn9BsbukpZE5T22wMXhv0FydDQ7caIE2LVoW0982WHnScpWzs9fvz8Z9xVP+dktuDzzz7j9cEeRVWzLAvcxgpmZYvho5Iin+NtEyKjnMnKqu0kJoxWRkRiITiqUnM5L7i6qTi/zdg9+pj3XtzRHYw4mWXE43V++v5LVr//C14dX3K29yV1lFA8NNzOZ3RjT91agvXaaEy2SB4f6ee/MwrxBCvWQ5G3KrtvVS+Iz8smfKyNT2wieo0giHxzqoJ0H6vNFz+QerCDGPFdHfH2+rsqMSr0N58fp52okd//abebpJ3vBQkTr8QC4IL3QlzZEKVGWmulleCUMQbBu8Y50aI8EAHoSHkJXnmvg8HiUA5NTsz+/wGke4wuOI25MAAAAABJRU5ErkJggg==)"><button class="ph-btn" type="button" data-full="img/okno.jpg" data-cap="okno + kočka" aria-label="Zvětšit fotku: okno + kočka"><img src="img/okno-f.webp" width="1366" height="966" alt="Obývák s oknem do zahrady, v okně kočka" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tr"></span><span class="tape t-bl"></span><figcaption class="cap">okno + kočka</figcaption></figure>
+    <figure class="ph c-koupelna" style="--mx:6.05%;--my:4.68%;--mxf:0.0605;--tiny:url(data:image/png;base64,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)"><button class="ph-btn" type="button" data-full="img/koupelna.jpg" data-cap="koupelna" aria-label="Zvětšit fotku: koupelna"><img src="img/koupelna-f.webp" width="1024" height="1324" alt="Koupelna se sprchovým koutem" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tl"></span><figcaption class="cap">koupelna</figcaption></figure>
+    <figure class="ph c-chodba" style="--mx:6.05%;--my:4.68%;--mxf:0.0605;--tiny:url(data:image/png;base64,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)"><button class="ph-btn" type="button" data-full="img/chodba.jpg" data-cap="chodba" aria-label="Zvětšit fotku: chodba"><img src="img/chodba-f.webp" width="1024" height="1324" alt="Chodba s vestavěnou skříní" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tr"></span><figcaption class="cap">chodba</figcaption></figure>
+    <figure class="ph c-satna" style="--mx:6.05%;--my:4.68%;--mxf:0.0605;--tiny:url(data:image/png;base64,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)"><button class="ph-btn" type="button" data-full="img/satna.jpg" data-cap="šatna" aria-label="Zvětšit fotku: šatna"><img src="img/satna-f.webp" width="1024" height="1324" alt="Šatna" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tc"></span><span class="tape t-br"></span><figcaption class="cap">šatna</figcaption></figure>
+  </div>
+  <p class="hint">ťukni na fotku a uvidíš ji celou</p>
+</section>
+
+<!-- ================= ZAHRADA ================= -->
+<section class="garden wrap" aria-label="Zahrada">
+  <h2 class="gold mid">Zahrada 60 m²</h2>
+  <div class="garden-grid">
+    <div class="g-ph">
+      <figure class="ph bleed" style="--mx:6.08%;--my:7.78%;--mxf:0.0608;--tiny:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAATCAYAAACKsM07AAAE2ElEQVR42jXU225cZxmA4ff7N2vNzjP22I5N3WAUpWlQVKIKIUVwhISUM7gB7qSH3AlXggBVqqhoiWhp0wRjB9ceO7Yz27XWv/s4qHgu4pHf//FiKOH2kRNX5YI6KcU4rzlnp6IFrE8kBt61TRfU+9qWnMRY1VxyssY6UWOSqhdVjWjrMdY410x61Ws3pHm43Yt/mOTb4+nhfZlMt9VAUdQaEAQVkWIFRQRFXS6qqqizqKqQs2rTBYkx2i6kHGM2d4H/fr8In7ioebCYXT6Mp3/9sHrwc57+5jnOWf7POQEMimKNgEDJiRAiWjpWizVt02G7lhgi/ZIxIoib+FMt285JKcPhsGzygMvzc25v31FVNYhgrcEawTlH12xYvVvQtQ2hbVhv1oyGQ5aLBTcXZ4ynu4y2dwgxYrwlj8ZaGzonBR0MemV0dMxgMOb66oqSO+r+FkUj89tTxjs/pluuiOs1y5sbbhcrblYbHn34mMuLc+bf/5vxUaRebGiaDfVggL8/Lrn01Ymlbtpsb2fviN0V1ctvkOaWu9426nqklLH+nNBFUlFWizs0Rab9Ae3rNxgKbW8XkqFarAjNkubtjHq4L2FwJK6UnCR15PmM09NTesbw8cNjXr1b0oQ5RhyubrFaqNlQxTdoCJTS4y6c4FwNYgnzQgods9kF8+srPpoc6d6TI3VZS3676MrJ+QUXl2d44/nlB0+p1ydcz94w7FVsjSyH+57RjpAt5GIJaY0glJTJSZFsiC4xHm0Q7VPV1gA4Y6ybb9YiYtka79E0G67vzhilCw4Gd/THNYOdATrMROOgCEYEi6PpWkrO5AyV1FgcvbqichVbgzpryckB1E5lZ1KxO77HZLLD+wdTDmXKlyd/p2vWkAoxZHIpoAo5QTFoAotDsoAYmqZhsw6AJRaKj+BSVP/R40dm8qMJOWVEBOKSgYeDowd88e1nfHv2D2SjWOuhCN55vLVUtiJmhSR0qWXVNqRQcBWIdRZnvfNeWyCHGGlXS9rNgr3dCUkttR/x7MmveX/3AZ999RdmN+dU3pFsYgMM/QARg8HQNC1t6Agxg6kIIVAZk5y1Jl1eXaSbv/2Jdr1kZ3vKaPQEFGKMCHC4d5/nz37HV69f8PXrL1isllAUv+WpjCMh5AShyxixqAqKkFLCtW3ur+cL3zQNu9N7jEdjQhcwFESglEyQQOU8H//0Fxzt3+fTL//M7OqMrm3JpsbYQtFCiYp1hiKCGlFTeXHGWDfY2ha3c8iwX1FKJoYOyFSVQ0shlUJIkWG/z8H+ezz/1W/5+rsX/PPl5zTdAhByKORsEKf0hgOM8eSQjVMppfUTruWQCXeM+j88lFICCoKiCs5ZluvNDxEWePzwZ4y3dvnXy895e3tBiImujTTNhuUmsNO00nMmu76vYhslm+0jkIKtFVtViAgxRZw1OG8RI2jMLNcd/V4PaxyH7x2zt3/Af9684puXL5gvllgHbjjBWy+i2bgudI2tq5Pp8YGE1BMd9zRgREFKyaZT0cqJiKC5aMmpsDJGvbcGVbVWOD5+Kuknz5ivl1gjKtahg3snogTX2vTdEP+J87LNcF9mseRQktS9yuaSUGOLx7gQojPGBUzJMcfSk8qGksUmUyzGcvCBTqWUEtBEArFLt8yv/geGttCxAO/NgwAAAABJRU5ErkJggg==)"><button class="ph-btn" type="button" data-full="img/zahrada.jpg" data-cap="terasa + trávník" aria-label="Zvětšit fotku: terasa + trávník"><img src="img/zahrada-f.webp" width="1480" height="1157" alt="Zahrada 60 m² s terasou a trávníkem" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tl"></span><span class="tape t-tr"></span><figcaption class="cap">terasa + trávník</figcaption></figure>
+      <div class="burst-w"><div class="burst"><span>pet +<br>gardener<br>friendly</span></div></div>
+    </div>
+    <div class="g-notes">
+      <span class="gum green">+ pergola zůstává</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ZŮSTÁVÁ + PRACHY ================= -->
+<div class="wrap ss-grid">
+  <section class="stays">
+    <div class="glass">
+      <p class="pxl">z toho, co je na fotkách, zůstává</p>
+      <ul class="icons">
+        <li><span class="tile"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="#0a1f3d" d="M4 1h8v1h-8zM4 2h1v1h-1zM11 2h1v1h-1zM4 3h1v1h-1zM11 3h1v1h-1zM4 4h1v1h-1zM11 4h1v1h-1zM4 5h1v1h-1zM11 5h1v1h-1zM4 6h8v1h-8zM4 7h1v1h-1zM11 7h1v1h-1zM4 8h1v1h-1zM11 8h1v1h-1zM4 9h1v1h-1zM11 9h1v1h-1zM4 10h1v1h-1zM11 10h1v1h-1zM4 11h1v1h-1zM11 11h1v1h-1zM4 12h1v1h-1zM11 12h1v1h-1zM4 13h1v1h-1zM11 13h1v1h-1zM4 14h8v1h-8zM5 15h1v1h-1zM10 15h1v1h-1z"/><path fill="#19a7e6" d="M9 3h1v1h-1zM9 4h1v1h-1zM9 8h1v1h-1zM9 9h1v1h-1zM9 10h1v1h-1z"/><path fill="#ffffff" d="M5 2h6v1h-6zM5 3h4v1h-4zM10 3h1v1h-1zM5 4h4v1h-4zM10 4h1v1h-1zM5 5h6v1h-6zM5 7h6v1h-6zM5 8h4v1h-4zM10 8h1v1h-1zM5 9h4v1h-4zM10 9h1v1h-1zM5 10h4v1h-4zM10 10h1v1h-1zM5 11h6v1h-6zM5 12h6v1h-6zM5 13h6v1h-6z"/></svg></span>lednička</li>
+        <li><span class="tile"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="#0a1f3d" d="M2 1h12v1h-12zM2 2h1v1h-1zM13 2h1v1h-1zM2 3h1v1h-1zM13 3h1v1h-1zM2 4h12v1h-12zM2 5h1v1h-1zM13 5h1v1h-1zM2 6h1v1h-1zM5 6h6v1h-6zM13 6h1v1h-1zM2 7h1v1h-1zM5 7h2v1h-2zM9 7h2v1h-2zM13 7h1v1h-1zM2 8h1v1h-1zM4 8h2v1h-2zM10 8h2v1h-2zM13 8h1v1h-1zM2 9h1v1h-1zM4 9h1v1h-1zM11 9h1v1h-1zM13 9h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM11 10h1v1h-1zM13 10h1v1h-1zM2 11h1v1h-1zM4 11h2v1h-2zM10 11h2v1h-2zM13 11h1v1h-1zM2 12h1v1h-1zM5 12h6v1h-6zM13 12h1v1h-1zM2 13h1v1h-1zM6 13h4v1h-4zM13 13h1v1h-1zM2 14h12v1h-12z"/><path fill="#19a7e6" d="M4 2h1v1h-1zM6 2h1v1h-1zM7 7h1v1h-1zM6 8h1v1h-1zM8 8h2v1h-2zM5 9h1v1h-1zM7 9h2v1h-2zM10 9h1v1h-1zM6 10h2v1h-2zM9 10h2v1h-2zM6 11h1v1h-1zM8 11h2v1h-2z"/><path fill="#8fd8f7" d="M8 7h1v1h-1zM7 8h1v1h-1zM6 9h1v1h-1zM9 9h1v1h-1zM5 10h1v1h-1zM8 10h1v1h-1zM7 11h1v1h-1z"/><path fill="#f6cf4a" d="M11 2h1v1h-1z"/><path fill="#ffffff" d="M3 2h1v1h-1zM5 2h1v1h-1zM7 2h4v1h-4zM12 2h1v1h-1zM3 3h10v1h-10zM3 5h10v1h-10zM3 6h2v1h-2zM11 6h2v1h-2zM3 7h2v1h-2zM11 7h2v1h-2zM3 8h1v1h-1zM12 8h1v1h-1zM3 9h1v1h-1zM12 9h1v1h-1zM3 10h1v1h-1zM12 10h1v1h-1zM3 11h1v1h-1zM12 11h1v1h-1zM3 12h2v1h-2zM11 12h2v1h-2zM3 13h3v1h-3zM10 13h3v1h-3z"/></svg></span>pračka</li>
+        <li><span class="tile"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="#0a1f3d" d="M2 1h12v1h-12zM2 2h1v1h-1zM13 2h1v1h-1zM2 3h1v1h-1zM13 3h1v1h-1zM2 4h12v1h-12zM2 5h1v1h-1zM13 5h1v1h-1zM2 6h1v1h-1zM5 6h6v1h-6zM13 6h1v1h-1zM2 7h1v1h-1zM13 7h1v1h-1zM2 8h1v1h-1zM13 8h1v1h-1zM2 9h1v1h-1zM13 9h1v1h-1zM2 10h1v1h-1zM13 10h1v1h-1zM2 11h1v1h-1zM13 11h1v1h-1zM2 12h1v1h-1zM13 12h1v1h-1zM2 13h1v1h-1zM13 13h1v1h-1zM2 14h12v1h-12z"/><path fill="#19a7e6" d="M4 2h2v1h-2zM4 9h1v1h-1zM6 9h1v1h-1zM8 9h1v1h-1zM10 9h1v1h-1zM5 10h1v1h-1zM7 10h1v1h-1zM9 10h1v1h-1zM11 10h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM8 12h1v1h-1zM10 12h1v1h-1z"/><path fill="#3ca614" d="M11 2h1v1h-1z"/><path fill="#8fd8f7" d="M4 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM10 10h1v1h-1z"/><path fill="#ffffff" d="M3 2h1v1h-1zM6 2h5v1h-5zM12 2h1v1h-1zM3 3h10v1h-10zM3 5h10v1h-10zM3 6h2v1h-2zM11 6h2v1h-2zM3 7h10v1h-10zM3 8h10v1h-10zM3 9h1v1h-1zM5 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM11 9h2v1h-2zM3 10h1v1h-1zM12 10h1v1h-1zM3 11h10v1h-10zM3 12h1v1h-1zM5 12h1v1h-1zM7 12h1v1h-1zM9 12h1v1h-1zM11 12h2v1h-2zM3 13h10v1h-10z"/></svg></span>myčka</li>
+        <li><span class="tile"><svg viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><path fill="#0a1f3d" d="M2 3h1v1h-1zM5 3h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM14 3h1v1h-1zM1 4h14v1h-14zM3 5h1v1h-1zM12 5h1v1h-1zM3 6h1v1h-1zM12 6h1v1h-1zM3 7h1v1h-1zM12 7h1v1h-1zM3 8h1v1h-1zM12 8h1v1h-1zM3 9h1v1h-1zM12 9h1v1h-1zM3 10h1v1h-1zM12 10h1v1h-1zM3 11h1v1h-1zM12 11h1v1h-1zM3 12h1v1h-1zM12 12h1v1h-1zM3 13h1v1h-1zM12 13h1v1h-1zM3 14h1v1h-1zM12 14h1v1h-1z"/><path fill="#3ca614" d="M2 5h1v1h-1zM4 5h1v1h-1zM6 5h1v1h-1zM9 5h1v1h-1zM11 5h1v1h-1zM13 5h1v1h-1zM5 6h1v1h-1zM7 6h1v1h-1zM10 6h1v1h-1zM4 7h1v1h-1zM11 7h1v1h-1zM4 9h1v1h-1zM11 9h1v1h-1zM0 15h16v1h-16z"/><path fill="#f6cf4a" d="M10 5h1v1h-1zM6 6h1v1h-1z"/></svg></span>pergola</li>
+      </ul>
+      <div class="stays-foot">
+        <span class="muted" style="font-weight:700">zbytek nábytku volitelný</span>
+        <span class="gum sm">+ střešené parkovací místo</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="money">
+    <div class="lcd calc">
+      <div class="head">měsíčně</div>
+      <div class="row"><span>NÁJEM</span><i></i><b>8 000</b></div>
+      <div class="row"><span>VODA</span><i></i><b>700</b></div>
+      <p class="note">hodně jsme zahradničili, ale dá se nastavit podle potřeby</p>
+      <div class="row"><span>UTILS</span><i></i><b>2 000–2 500</b></div>
+      <div class="row tot"><span>CELKEM CCA</span><i></i><b>10 700–11 200 Kč</b></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= LOKALITA ================= -->
+<section class="where wrap">
+  <h2 class="gold mid">Mníšek pod Brdy</h2>
+  <p class="pxl">novostavba rozdělená na 3 byty</p>
+  <div class="where-grid">
+    <ul class="nums">
+      <li><b>6min</b><span>pěšky na zastávku busu</span></li>
+      <li><b>8×</b><span>za hodinu to ve špičce jezdí na Smícháč</span></li>
+      <li><b>25min</b><span>přímým busem až na Smíchovské nádraží</span></li>
+    </ul>
+    <div class="lcd board" role="region" aria-label="Ranní přímé spoje do Prahy">
+      <div class="board-head"><span>Mníšek p. Brdy, Náměstí</span><span>→</span><span>Smíchovské nádraží</span></div>
+      <table>
+        <thead><tr><th>odjezd</th><th>linka</th><th>příjezd</th><th>cesta</th></tr></thead>
+        <tbody>
+          <tr><td>07:00</td><td><span class="ln">317</span></td><td>07:32</td><td>32 min</td></tr>
+          <tr><td>07:07</td><td><span class="ln">320</span></td><td>07:39</td><td>32 min</td></tr>
+          <tr><td>07:15</td><td><span class="ln">317</span></td><td>07:47</td><td>32 min</td></tr>
+          <tr class="fast"><td>07:22</td><td><span class="ln">319</span></td><td>07:47</td><td>25 min</td></tr>
+          <tr><td>07:30</td><td><span class="ln">317</span></td><td>08:02</td><td>32 min</td></tr>
+          <tr><td>07:37</td><td><span class="ln">320</span></td><td>08:09</td><td>32 min</td></tr>
+          <tr class="fast"><td>07:42</td><td><span class="ln">319</span></td><td>08:07</td><td>25 min</td></tr>
+          <tr><td>07:45</td><td><span class="ln">317</span></td><td>08:17</td><td>32 min</td></tr>
+          <tr class="fast"><td>07:52</td><td><span class="ln">319</span></td><td>08:17</td><td>25 min</td></tr>
+          <tr><td>08:00</td><td><span class="ln">317</span></td><td>08:32</td><td>32 min</td></tr>
+        </tbody>
+      </table>
+      <p class="board-foot">ranní špička: 10 přímých spojů bez přestupu. <b>linka 319 = 25 min</b>, ostatní 32 min.</p>
+    </div>
+  </div>
+
+  <div class="around">
+    <p class="pxl">v dochozím okolí</p>
+    <p class="around-line"><span class="it">Brdy<span class="mini">zalesněné<br>kopcovité</span></span> <span class="it"><span class="p">+</span> 3&nbsp;rybníky</span> <span class="it"><span class="p">+</span> 4&nbsp;supermarkety</span> <span class="it"><span class="p">+</span> strip&nbsp;mall</span></p>
+  </div>
+
+  <figure class="quote">
+    <div class="glass">
+      <h3 class="gold sm">Bydlíme tu 3 roky</h3>
+      <blockquote style="margin:0"><p>a i když každý dojíždíme cca 4× týdně do Prahy, cesta busem je tak klidná a spolehlivá, že jsme ji vždycky byli schopní uspokojivě využít a za ten klídeček doma, na zahradě i v okolní přírodě nám to bydlení v suburbu stojí.</p></blockquote>
+      <footer>— (možná) tvoji budoucí sousedi</footer>
+    </div>
+    <span class="tape" style="left:50%;transform:translateX(-50%) rotate(-4deg)"></span>
+  </figure>
+</section>
+
+<!-- ================= DM ================= -->
+<section class="cta wrap" id="dm">
+  <p class="pxl">pro další detaily</p><br>
+  <a class="gum xl js-dm" href="#dm">DM&nbsp;ME&nbsp;→</a>
+  <p class="cta-sub">Napiš na Instagram: pošlu další fotky, odpovím na cokoliv a domluvíme prohlídku.</p>
+  <p class="phone">nebo volej <a href="tel:+420792365450">792 365 450</a></p>
+  <button class="glassbtn js-share" type="button">pošli to někomu, kdo hledá byt ↗</button>
+</section>
+
+<footer class="foot wrap">
+  <div class="pxbar" aria-hidden="true"></div>
+  1+kk / 35 m² + zahrada 60 m² / Mníšek pod Brdy / 2026
+</footer>
+
+<nav class="dock" aria-label="Kontakt">
+  <a class="gum js-dm" href="#dm">DM ME →</a>
+  <button class="glassbtn js-share" type="button" aria-label="Sdílet odkaz">↗</button>
+</nav>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Fotka">
+  <button class="x" type="button" aria-label="Zavřít">✕</button>
+  <button class="prev" type="button" aria-label="Předchozí fotka">←</button>
+  <img alt="">
+  <button class="next" type="button" aria-label="Další fotka">→</button>
+  <p class="lb-cap"></p>
+</div>
+
+<script>
+(function(){
+  /* ===== SEM DOPLŇ SVŮJ INSTAGRAM (bez @) ===== */
+  var IG_NICK = "TVUJ_INSTAGRAM";
+
+  var dmHref = (IG_NICK && IG_NICK !== "TVUJ_INSTAGRAM") ? "https://ig.me/m/" + IG_NICK : "https://www.instagram.com/direct/inbox/";
+  document.querySelectorAll(".js-dm").forEach(function(a){ a.href = dmHref; });
+
+  /* --- led na pozadí: pixelový šum podle textury z letáku --- */
+  var cv = document.getElementById("frost"), ctx = cv.getContext("2d", { willReadFrequently: true });
+  var map = new Image(), lastW = 0, lastH = 0;
+  function frost(){
+    var PX = 2, cw = cv.clientWidth, ch = cv.clientHeight;
+    if (!cw || !ch || !map.naturalWidth) return;
+    if (cw === lastW && Math.abs(ch - lastH) < 140) return;
+    lastW = cw; lastH = ch;
+    var W = Math.ceil(cw / PX), H = Math.ceil(ch / PX);
+    cv.width = W; cv.height = H;
+    var s = Math.max(W / map.naturalWidth, H / map.naturalHeight), dw = map.naturalWidth * s, dh = map.naturalHeight * s;
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(map, (W - dw) / 2, (H - dh) / 2, dw, dh);
+    var id = ctx.getImageData(0, 0, W, H), d = id.data;
+    for (var y = 0; y < H; y++) {
+      var ey = Math.abs(y / H - .5) * 2;
+      for (var x = 0; x < W; x++) {
+        var i = (y * W + x) * 4, t = d[i] / 255, ex = Math.abs(x / W - .5) * 2;
+        var edge = Math.max(Math.pow(ex, 3), Math.pow(ey, 5) * .5);
+        var p = Math.pow(Math.max(0, (t - .22) * 1.55), 1.35) * (.32 + .95 * edge);
+        if (Math.random() < p) {
+          if (Math.random() < .55) { d[i] = 13; d[i+1] = 108; d[i+2] = 194; }
+          else { d[i] = 118; d[i+1] = 176; d[i+2] = 232; }
+        } else {
+          var k = t * .5 + edge * .4;
+          d[i] = 250 - k * 22; d[i+1] = 252 - k * 10; d[i+2] = 255;
+        }
+        d[i+3] = 255;
+      }
+    }
+    ctx.putImageData(id, 0, 0);
+  }
+  map.onload = frost; map.src = "img/frost-map.jpg";
+  var rt; addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(frost, 150); });
+
+  /* --- bubliny --- */
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var bb = document.querySelector(".bubbles");
+    for (var b = 0; b < 12; b++) {
+      var el = document.createElement("i"), sz = 14 + Math.random() * 62;
+      el.style.cssText = "--x:" + (Math.random() * 100).toFixed(1) + "%;--s:" + sz.toFixed(0) + "px;--d:" + (16 + Math.random() * 20).toFixed(1) + "s;--dl:-" + (Math.random() * 30).toFixed(1) + "s;--sw:" + ((Math.random() - .5) * 160).toFixed(0) + "px";
+      bb.appendChild(el);
+    }
+  }
+
+  /* --- fotky: pixelový reveal --- */
+  var phs = Array.prototype.slice.call(document.querySelectorAll(".ph"));
+  phs.forEach(function(f){ var im = f.querySelector("img"); if (im.complete && im.naturalWidth) f.classList.add("ok"); });
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }); }, { rootMargin: "0px 0px -8% 0px", threshold: .12 });
+    phs.forEach(function(f){ io.observe(f); });
+  } else phs.forEach(function(f){ f.classList.add("in"); });
+
+  /* --- sdílení --- */
+  function share(btn){
+    var data = { title: "Hledáme nájemníka do 1+kk 35 m² se zahradou", text: "8k měsíc + 3k utils, zahrada 60 m², nastěhování 15. 12. – 1. 1.", url: location.href };
+    if (navigator.share) { navigator.share(data).catch(function(){}); return; }
+    var done = function(){ var t = btn.textContent; btn.textContent = btn.getAttribute("aria-label") ? "✓" : "odkaz zkopírovaný ✓"; setTimeout(function(){ btn.textContent = t; }, 1800); };
+    if (navigator.clipboard) navigator.clipboard.writeText(location.href).then(done, function(){ window.prompt("Zkopíruj odkaz:", location.href); });
+    else window.prompt("Zkopíruj odkaz:", location.href);
+  }
+  document.querySelectorAll(".js-share").forEach(function(b){ b.addEventListener("click", function(){ share(b); }); });
+
+  /* --- lightbox --- */
+  var btns = Array.prototype.slice.call(document.querySelectorAll(".ph-btn"));
+  var lb = document.getElementById("lb"), lbImg = lb.querySelector("img"), lbCap = lb.querySelector(".lb-cap"), cur = 0;
+  function open(i){
+    cur = (i + btns.length) % btns.length; var b = btns[cur];
+    lbImg.src = b.dataset.full; lbImg.alt = b.querySelector("img").alt;
+    lbCap.textContent = b.dataset.cap + "   " + (cur + 1) + " / " + btns.length;
+    lb.hidden = false; document.body.style.overflow = "hidden";
+  }
+  function close(){ lb.hidden = true; document.body.style.overflow = ""; }
+  btns.forEach(function(b, i){ b.addEventListener("click", function(){ open(i); }); });
+  lb.querySelector(".x").addEventListener("click", close);
+  lb.querySelector(".prev").addEventListener("click", function(e){ e.stopPropagation(); open(cur - 1); });
+  lb.querySelector(".next").addEventListener("click", function(e){ e.stopPropagation(); open(cur + 1); });
+  lb.addEventListener("click", function(e){ if (e.target === lb) close(); });
+  document.addEventListener("keydown", function(e){
+    if (lb.hidden) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") open(cur - 1);
+    if (e.key === "ArrowRight") open(cur + 1);
+  });
+  var sx = null;
+  lb.addEventListener("touchstart", function(e){ sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", function(e){ if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) open(cur + (dx < 0 ? 1 : -1)); sx = null; });
+
+  /* --- přilepené DM ME --- */
+  var dock = document.querySelector(".dock"), heroVis = true, ctaVis = false;
+  function upd(){ dock.classList.toggle("on", !heroVis && !ctaVis); }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function(en){ heroVis = en[0].isIntersecting; upd(); }).observe(document.querySelector(".hero"));
+    new IntersectionObserver(function(en){ ctaVis = en[0].isIntersecting; upd(); }).observe(document.querySelector(".cta"));
+  }
+})();
+</script>
+</body>
+</html>
