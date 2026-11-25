@@ -115,6 +115,7 @@ a.gum:active{transform:translateY(1px)}
   font:400 11px/1.2 var(--tiny);letter-spacing:.06em;text-transform:uppercase;color:var(--deep);pointer-events:none}
 .cap.r{left:auto;right:calc(var(--mx) + 10px)}
 .cap-top .cap{bottom:auto;top:calc(var(--my) + 14px)}
+.cap-r .cap{left:auto;right:calc(var(--mx) + 10px)}
 .tape{position:absolute;z-index:6;width:96px;height:26px;pointer-events:none;
   background:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0 6px,rgba(255,255,255,.18) 6px 7px),linear-gradient(180deg,rgba(236,247,255,.92),rgba(190,224,248,.72) 55%,rgba(236,247,255,.88));
   -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);filter:drop-shadow(0 1px 2px rgba(13,60,120,.45));
@@ -277,6 +278,7 @@ a.gum:active{transform:translateY(1px)}
   .c-koupelna{grid-column:9/13;grid-row:1/3;margin-top:-4%}
   .c-chodba{grid-column:4/7;grid-row:2;margin-top:-8%}
   .c-satna{grid-column:6/10;grid-row:2;margin-top:-2%}
+  .c-koupelna .cap{left:auto;right:calc(var(--mx) + 10px)}
   .garden-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,3fr);gap:30px;align-items:end}
   .g-ph .ph.bleed{width:auto;margin-left:0}
   .burst-w{right:-30px;top:-40px}
@@ -339,9 +341,9 @@ a.gum:active{transform:translateY(1px)}
 <section class="wrap" aria-label="Fotky bytu">
   <div class="collage">
     %%FIG:kuchyn|kuchyň|Kuchyň|c-kuchyn cap-top|t-tc|lazy%%
-    %%FIG:okno|okno + kočka|Obývák s oknem do zahrady, v okně kočka|c-okno|t-tr,t-bl|lazy%%
+    %%FIG:okno|okno + kočka|Obývák s oknem do zahrady, v okně kočka|c-okno cap-r|t-tr,t-bl|lazy%%
     %%FIG:koupelna|koupelna|Koupelna se sprchovým koutem|c-koupelna|t-tl|lazy%%
-    %%FIG:chodba|chodba|Chodba s vestavěnou skříní|c-chodba|t-tr|lazy%%
+    %%FIG:chodba|chodba|Chodba s vestavěnou skříní|c-chodba cap-top|t-tr|lazy%%
     %%FIG:satna|šatna|Šatna|c-satna|t-tc,t-br|lazy%%
   </div>
   <p class="hint">ťukni na fotku a uvidíš ji celou</p>
