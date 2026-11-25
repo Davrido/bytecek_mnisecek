@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#19a7e6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500..900&family=Nunito:ital,wght@0,400..900;1,400..900&family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500..900&family=Nunito:ital,wght@0,400..900;1,400..900&family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&family=VT323&family=Bungee&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/title.webp">
 <style>
 :root{
@@ -262,6 +262,63 @@ a.gum:active{transform:translateY(1px)}
 .lb .next{right:10px;top:50%;margin-top:-26px}
 .lb .lb-cap{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom));margin:0;text-align:center;font:400 13px/1 var(--tiny);letter-spacing:.08em;text-transform:uppercase;color:#bff3ff}
 
+/* ===== Spirina (dubstep 3D nápis) ===== */
+.spirina{padding-top:100px;--beat:0}
+.sp-kicker{margin:0;font:700 clamp(22px,6.6vw,42px)/1.1 var(--px);color:var(--deep);transform:rotate(-2deg);
+  text-shadow:0 0 6px #fff,0 0 14px #fff,3px 3px 0 rgba(25,167,230,.35)}
+.sp-stage{position:relative;display:grid;place-items:center;margin-top:6px;padding:44px 0 54px}
+.sp-rays{position:absolute;left:50%;top:50%;width:min(150%,980px);aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:repeating-conic-gradient(rgba(255,70,235,.28) 0 5deg,rgba(255,255,255,0) 5deg 15deg,rgba(0,225,255,.28) 15deg 20deg,rgba(255,255,255,0) 20deg 30deg);
+  -webkit-mask:radial-gradient(circle,#000 0 12%,rgba(0,0,0,.55) 34%,transparent 62%);mask:radial-gradient(circle,#000 0 12%,rgba(0,0,0,.55) 34%,transparent 62%);
+  transform:translate(-50%,-50%);animation:sp-spin 28s linear infinite}
+@keyframes sp-spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.sp-glow{position:absolute;left:50%;top:50%;width:min(110%,820px);height:70%;border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(255,255,255,.95) 0 14%,rgba(120,240,255,.55) 32%,rgba(255,70,235,.3) 52%,rgba(255,255,255,0) 70%);
+  transform:translate(-50%,-50%) scale(calc(.9 + var(--beat) * .35));opacity:calc(.55 + var(--beat) * .45);animation:sp-flash 1.8s ease-in-out infinite}
+@keyframes sp-flash{50%{opacity:1}}
+.sp-beat{position:relative;z-index:2;transform:scale(calc(1 + var(--beat) * .1))}
+.sp-name{position:relative;margin:0;white-space:nowrap;font:400 clamp(56px,17.2vw,184px)/1.05 "Bungee",var(--sans);letter-spacing:.03em;color:#ff36e8;
+  text-shadow:.012em .012em 0 #ea2bdb,.024em .024em 0 #d225ca,.036em .036em 0 #ba1fb9,.048em .048em 0 #a11aa8,.06em .06em 0 #891597,.072em .072em 0 #721187,
+    .084em .084em 0 #5c0d76,.096em .096em 0 #470a63,.108em .108em 0 #35074f,.12em .12em 0 #25043b,.16em .2em .14em rgba(30,0,60,.5),0 0 .25em rgba(0,235,255,.8),0 0 .6em rgba(255,60,240,.5);
+  transform:rotate(-5deg) skewX(-7deg);animation:sp-wub 2.4s ease-in-out infinite}
+@keyframes sp-wub{50%{transform:rotate(-3deg) skewX(-3deg) scale(1.035)}}
+.sp-name::after{content:attr(data-t);position:absolute;left:0;top:0;text-shadow:none;color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:.018em rgba(255,255,255,.95);
+  background-image:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.95) 48%,transparent 58%),linear-gradient(180deg,#ffffff 0%,#d8fbff 20%,#5ff0ff 42%,#0b3f9a 49%,#ff4fe8 53%,#ffc6f8 76%,#ffffff 100%);
+  background-size:280% 100%,100% 100%;-webkit-background-clip:text;background-clip:text;animation:sp-shine 3.2s ease-in-out infinite}
+@keyframes sp-shine{0%,40%{background-position:130% 0,0 0}100%{background-position:-50% 0,0 0}}
+.sp-name::before{content:attr(data-t);position:absolute;left:0;top:0;color:#00f0ff;text-shadow:none;opacity:0;mix-blend-mode:screen;animation:sp-glitch 3.6s steps(1) infinite}
+@keyframes sp-glitch{0%,84%,100%{opacity:0;transform:none;clip-path:none}
+  86%{opacity:.95;clip-path:inset(18% 0 60% 0);transform:translate(-.08em,0)}
+  89%{opacity:.95;clip-path:inset(60% 0 14% 0);transform:translate(.1em,0)}
+  92%{opacity:.95;clip-path:inset(38% 0 40% 0);transform:translate(-.05em,0)}
+  95%{opacity:0}}
+.sp-stars{position:absolute;inset:0;z-index:3;pointer-events:none}
+.sp-stars i{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  background:radial-gradient(circle,#fff 0 14%,var(--c) 36%,rgba(255,255,255,0) 72%);
+  clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%);
+  animation:sp-twinkle var(--t) ease-in-out infinite;animation-delay:var(--d);opacity:0}
+.sp-stars b{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  background:radial-gradient(circle,#fff 0 4%,rgba(160,245,255,.8) 9%,rgba(255,255,255,0) 22%),
+    linear-gradient(90deg,rgba(255,255,255,0),#fff 50%,rgba(255,255,255,0)) center/100% 2px no-repeat,
+    linear-gradient(0deg,rgba(255,255,255,0),#fff 50%,rgba(255,255,255,0)) center/2px 70% no-repeat;
+  animation:sp-twinkle 2.6s ease-in-out infinite;animation-delay:var(--d);opacity:0}
+@keyframes sp-twinkle{0%,100%{opacity:0;transform:scale(.2) rotate(0deg)}45%{opacity:1;transform:scale(1) rotate(40deg)}60%{opacity:1;transform:scale(1.15) rotate(55deg)}}
+.sp-photos{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));margin-top:6px}
+.sp-photos .ph{align-self:start}
+.sp-a{grid-column:1/10;grid-row:1;--r:-2.2deg;z-index:1}
+.sp-b{grid-column:6/13;grid-row:2;margin-top:-34%;--r:2.6deg;z-index:2}
+.sp-c{grid-column:1/13;grid-row:3;margin-top:-10%;--r:-1.2deg;z-index:3}
+@media (min-width:900px){
+  .sp-stage{padding:60px 0 70px}
+  .sp-a{grid-column:1/5;grid-row:1;margin-top:0}
+  .sp-c{grid-column:4/10;grid-row:1;margin-top:22%;z-index:2}
+  .sp-b{grid-column:9/13;grid-row:1;margin-top:-2%;z-index:3}
+}
+@media (prefers-reduced-motion:reduce){
+  .sp-rays,.sp-glow,.sp-name,.sp-name::after,.sp-name::before{animation:none}
+  .sp-stars i,.sp-stars b{animation:none;opacity:.9}
+}
+
 /* ===== přehrávač (aero / WMP11 vibe) ===== */
 .mp{position:fixed;z-index:85;left:12px;bottom:calc(12px + env(safe-area-inset-bottom));font-family:var(--sans);color:#e8f8ff;--beat:0}
 .mp button{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
@@ -457,6 +514,40 @@ a.gum:active{transform:translateY(1px)}
     <div class="g-notes">
       <span class="gum green">+ pergola zůstává</span>
     </div>
+  </div>
+</section>
+
+<!-- ================= SPIRINA ================= -->
+<section class="spirina wrap" aria-label="Spirina">
+  <p class="sp-kicker">nejmazlivější car v okolí:</p>
+  <div class="sp-stage">
+    <div class="sp-rays" aria-hidden="true"></div>
+    <div class="sp-glow" aria-hidden="true"></div>
+    <div class="sp-beat"><h2 class="sp-name" data-t="SPIRINA">SPIRINA</h2></div>
+    <div class="sp-stars" aria-hidden="true">
+      <i style="--x:3%;--y:22%;--s:34px;--d:0s;--t:1.9s;--c:#9ff4ff"></i>
+      <i style="--x:94%;--y:14%;--s:40px;--d:0.6s;--t:2.2s;--c:#fff3a8"></i>
+      <i style="--x:12%;--y:78%;--s:26px;--d:1.1s;--t:1.7s;--c:#ffb3f6"></i>
+      <i style="--x:86%;--y:70%;--s:30px;--d:0.3s;--t:2.0s;--c:#9ff4ff"></i>
+      <i style="--x:50%;--y:4%;--s:22px;--d:1.4s;--t:1.6s;--c:#ffffff"></i>
+      <i style="--x:70%;--y:92%;--s:24px;--d:0.9s;--t:2.3s;--c:#fff3a8"></i>
+      <i style="--x:28%;--y:8%;--s:18px;--d:0.2s;--t:1.5s;--c:#ffb3f6"></i>
+      <i style="--x:62%;--y:30%;--s:16px;--d:1.7s;--t:1.8s;--c:#ffffff"></i>
+      <i style="--x:20%;--y:52%;--s:20px;--d:0.5s;--t:2.1s;--c:#9ff4ff"></i>
+      <i style="--x:98%;--y:44%;--s:22px;--d:1.2s;--t:1.9s;--c:#ffb3f6"></i>
+      <i style="--x:40%;--y:94%;--s:18px;--d:0.7s;--t:1.6s;--c:#9ff4ff"></i>
+      <i style="--x:80%;--y:40%;--s:14px;--d:1.9s;--t:1.4s;--c:#fff3a8"></i>
+      <i style="--x:6%;--y:46%;--s:14px;--d:1.5s;--t:1.7s;--c:#ffffff"></i>
+      <i style="--x:56%;--y:66%;--s:14px;--d:0.4s;--t:2.0s;--c:#ffffff"></i>
+      <b style="--x:8%;--y:30%;--s:90px;--d:0s"></b>
+      <b style="--x:90%;--y:62%;--s:110px;--d:1.3s"></b>
+      <b style="--x:46%;--y:96%;--s:70px;--d:0.7s"></b>
+    </div>
+  </div>
+  <div class="sp-photos">
+    <figure class="ph sp-a" style="--mx:6.05%;--my:4.68%;--mxf:0.0605;--tiny:url(data:image/png;base64,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)"><button class="ph-btn" type="button" data-full="img/spirina-2.jpg" data-cap="portrét" aria-label="Zvětšit fotku: portrét"><img src="img/spirina-2-f.webp" width="1024" height="1326" alt="Kočka Spirina zblízka, žluté oči" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tl"></span><span class="tape t-tr"></span><figcaption class="cap">portrét</figcaption></figure>
+    <figure class="ph sp-b cap-top" style="--mx:6.05%;--my:4.68%;--mxf:0.0605;--tiny:url(data:image/png;base64,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)"><button class="ph-btn" type="button" data-full="img/spirina-1.jpg" data-cap="v koupelně" aria-label="Zvětšit fotku: v koupelně"><img src="img/spirina-1-f.webp" width="1024" height="1324" alt="Kočka Spirina sedí na dlažbě a kouká do foťáku" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-br"></span><figcaption class="cap">v koupelně</figcaption></figure>
+    <figure class="ph sp-c" style="--mx:6.08%;--my:7.88%;--mxf:0.0608;--tiny:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAATCAYAAACKsM07AAAFDUlEQVR42gXByZIbWRmA0e9OKaVSU0klV6ssle2yHW0iug0dLOgNK1jwFjwDe5a8B3sehQVEBwR0hIeyCbtGDZVK5Zz3/pyj/vjXq37QzQvbEXkjYrUNOohENrjKB6sFcZFq686GvvYWIgB8aKQLIkEr1Q8iorTx2tiirX2sTHCa2lfZZ+tU9/L5k/Ivs3j3PKuU9JxSWptQd1oHCdaEJgTxvvEQ9fva17n4oMQYo0Q6UQrV006Gfatj59S+rILV2qfN9PP7u9GfrTXtaBpt3yyHf38jRWAeVdQ+oio8QVIwULWGLC+QXkTfaIy27O+uoS0YDROmizVDZXFdi1Itp9NTrovfxP+9dSPrRemsbNiqBs2R3TYF0di9YTzWqKEFKWnzB+ocHr0jjoQ4bMjqlgxYP01oqkdyX9LvB1opQGnlcFgvVnpGiLqaNM8pKs83ZyecDDzVtsN3HUECgkU1LQ/bPZOB436TsXx6xmT0DQ/pgSjkeF9wOHbowYxOAkaFYKVrQuW7kNXXNFWByIi7h5SdaRm6Pt1OsT2k7Ld7dvuCumhhPMSSkG4aJgPFsX0kiSwuXqBJsaEhdg5RRFYbK8cOpfyQXZlTlRlgOftmSR02ZIcMS8Rmm3N7c2DGkPefjgySAav1hLISprHD9IfYvmd7t+eYl0xWRfAyE+2DyHJ6Ks/Ov2O+eMHwZAHxlH7cI0u3pKUnbTRN28O3CfPhmg+fdnRHxe9+/APj8ZLb+4xjDQRL4y3XdxnXm4MaWOOtEq9XkyEzrTlfLLk/qXi32RE7eAxDKrF8vjpQZI7zySXWxLy6eMGPv37Lm198x9d/biiOLdpq0jxnNBixPplxj6ZtxFnrtLm/+8pu+x9WkxUyilDHjC83O/rJmDZVPHEj/LTP6uycxemC3/4+YbVe4aM+eXlkMh5SHW75/OkLq9WcNn7C0YlulTdWvIR/XT2E4XbH9Ptz9lXAN56icOResx6+4Hz9mrPlGqOF0/UzlApY01DUKcYJq7M5X28+okWze6zx4YAkBNHUVhmlk15koshwsRrhyh1X+4aBmpEeHKcvL3jz7Wu+f/0KYwyb45GfPr7jbBZhVcrydEHc5jTDE2azEfebjHkcs41s6HIaa7wEY214efECLUJxv2GejHDRiIE+4e0Pv2R9siRND8znM7QO3Nz9m7Yc8uQs4e3lU65vfubZeIrXEct5jkfwOua2VMrWQeRyuVDjo+Pzpy+gNE0jnFxE9NsZJ/EpV58+8O7DO769fMryfMzbl3PSwxYahVUVg1goGk3XFIwGjp6GukFF1jjrHEwHA7WKFvgwpFYNfSdIknB5/gOzRPPTzc+U3Q0fvt6hexdU/oAKJemxIhjL/dcHRFl6Pc/t3Y5Ix7RTMV3jtVXa2Kpp1GCckPTOCD3Fc+dI24bL9TN82/J6lbBKx6i+Bqno6keaLmffCB9vt9Rlx2IWU+U1WSpEsVCWbVA2eKuDiFI69EczMoG2K5kOx4xdTNd5rOtjgiVOJtSmpatqsqxAtGfQG3Hb7PGNxpqE6XjGcNLijePqqFCitSWo432VXP3jcURWFeKbmlE6UtY56e0aBNFZc+mzslSR0yIIuXplmrahaY2E018xjqwU1lCKUp0JeKWlsu690yZVf/rb/+L8mL8ythvVjYjRnQrKqcggwaMAPMEL2kSCtCqESBvbide+DV5Z7X0QcVbrEES0Vgqg7XQadPLx/1bu1W6Xb9gVAAAAAElFTkSuQmCC)"><button class="ph-btn" type="button" data-full="img/spirina-3.jpg" data-cap="v zahradě" aria-label="Zvětšit fotku: v zahradě"><img src="img/spirina-3-f.webp" width="1480" height="1142" alt="Kočka Spirina leží v trávě mezi listy cuket" loading="lazy" decoding="async" onload="this.closest('.ph').classList.add('ok')"></button><span class="tape t-tc"></span><span class="tape t-br"></span><figcaption class="cap">v zahradě</figcaption></figure>
   </div>
 </section>
 
@@ -823,7 +914,7 @@ a.gum:active{transform:translateY(1px)}
   }
 
   /* ===== vizualizér: lesklé aqua sloupce + pixelové špičky + odraz + bubliny na beat ===== */
-  var big = $(".mp-viz"), mini = $(".mp-mini-viz"), N = 28;
+  var big = $(".mp-viz"), mini = $(".mp-mini-viz"), N = 28, spi = document.querySelector(".spirina");
   var lv = new Float32Array(N), pk = new Float32Array(N), pv = new Float32Array(N), bubbles = [], beatAvg = .2, t0 = performance.now(), last = 0;
   function fit(c){
     var r = c.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
@@ -903,7 +994,9 @@ a.gum:active{transform:translateY(1px)}
     if (!document.hidden) {
       bands(dt);
       var bass = (lv[0] + lv[1] + lv[2] + lv[3]) / 4;
-      mp.style.setProperty("--beat", au.paused ? 0 : Math.min(1, bass).toFixed(2));
+      var bv = au.paused ? 0 : Math.min(1, bass).toFixed(2);
+      mp.style.setProperty("--beat", bv);
+      if (spi) spi.style.setProperty("--beat", bv);
       var d = fit(mini); drawMini(d);
       if (mp.dataset.state === "full") { var d2 = fit(big); drawBig(d2, dt); }
     }

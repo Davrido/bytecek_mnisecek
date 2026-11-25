@@ -105,7 +105,7 @@
   }
 
   /* ===== vizualizér: lesklé aqua sloupce + pixelové špičky + odraz + bubliny na beat ===== */
-  var big = $(".mp-viz"), mini = $(".mp-mini-viz"), N = 28;
+  var big = $(".mp-viz"), mini = $(".mp-mini-viz"), N = 28, spi = document.querySelector(".spirina");
   var lv = new Float32Array(N), pk = new Float32Array(N), pv = new Float32Array(N), bubbles = [], beatAvg = .2, t0 = performance.now(), last = 0;
   function fit(c){
     var r = c.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
@@ -185,7 +185,9 @@
     if (!document.hidden) {
       bands(dt);
       var bass = (lv[0] + lv[1] + lv[2] + lv[3]) / 4;
-      mp.style.setProperty("--beat", au.paused ? 0 : Math.min(1, bass).toFixed(2));
+      var bv = au.paused ? 0 : Math.min(1, bass).toFixed(2);
+      mp.style.setProperty("--beat", bv);
+      if (spi) spi.style.setProperty("--beat", bv);
       var d = fit(mini); drawMini(d);
       if (mp.dataset.state === "full") { var d2 = fit(big); drawBig(d2, dt); }
     }
