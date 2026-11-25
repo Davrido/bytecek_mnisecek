@@ -16,6 +16,7 @@ def fig(m):
             f'<img src="img/{name}-f.webp" width="{d["w"]}" height="{d["h"]}" alt="{alt}" {load} decoding="async" onload="this.closest(\'.ph\').classList.add(\'ok\')">'
             f'</button>{tape_html}<figcaption class="cap">{cap}</figcaption></figure>')
 
+html = re.sub(r"%%INC:([\w.]+)%%", lambda m: (src / m.group(1)).read_text(encoding="utf-8").rstrip("\n"), html)
 html = re.sub(r"%%FIG:([^%]+)%%", fig, html)
 html = re.sub(r"%%ICON:(\w+)%%", lambda m: icons[m.group(1)], html)
 html = html.replace("%%STAR%%", icons["STAR"])

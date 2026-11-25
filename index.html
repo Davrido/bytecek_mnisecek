@@ -263,6 +263,102 @@ a.gum:active{transform:translateY(1px)}
 .lb .next{right:10px;top:50%;margin-top:-26px}
 .lb .lb-cap{position:absolute;left:0;right:0;bottom:calc(20px + env(safe-area-inset-bottom));margin:0;text-align:center;font:400 13px/1 var(--tiny);letter-spacing:.08em;text-transform:uppercase;color:#bff3ff}
 
+/* ===== přehrávač (aero / WMP11 vibe) ===== */
+.mp{position:fixed;z-index:85;left:12px;bottom:calc(12px + env(safe-area-inset-bottom));font-family:var(--sans);color:#e8f8ff;--beat:0}
+.mp button{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
+.mp-glass{position:relative;overflow:hidden;border:1px solid rgba(170,230,255,.6);
+  background:linear-gradient(180deg,rgba(58,96,132,.86) 0%,rgba(10,26,48,.93) 34%,rgba(3,11,22,.96) 100%);
+  -webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);
+  box-shadow:0 0 0 2px rgba(255,255,255,.6),0 14px 34px rgba(5,40,90,.5),0 0 calc(10px + var(--beat)*26px) rgba(40,190,255,calc(.18 + var(--beat)*.45)),inset 0 1px 0 rgba(255,255,255,.5),inset 0 -10px 22px rgba(25,167,230,.22)}
+.mp-glass::before{content:"";position:absolute;left:1px;right:1px;top:1px;height:42%;border-radius:inherit;border-bottom-left-radius:50% 14px;border-bottom-right-radius:50% 14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.04));pointer-events:none}
+
+/* mini */
+.mp-mini{display:flex;align-items:center;gap:6px;height:54px;padding:3px 6px 3px 3px;border-radius:999px;
+  transform-origin:0 100%;transition:opacity .25s,transform .3s cubic-bezier(.2,.9,.3,1.2)}
+.mp-mini>*{position:relative}
+.mp-mini-viz{width:34px;height:24px;display:block}
+.mp-mini-title{display:none;width:150px;overflow:hidden;white-space:nowrap;font:800 13px/1.2 var(--sans);
+  -webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mp-mini-title span{display:inline-block;padding-left:100%;animation:mq 12s linear infinite}
+.mp-mini-title small{font:400 10px/1 var(--tiny);color:#8fe4ff;letter-spacing:.04em;text-transform:uppercase}
+@keyframes mq{to{transform:translateX(-100%)}}
+.mp-ic{flex:none;display:grid;place-items:center;width:32px;height:32px;padding:0;border-radius:50%;cursor:pointer;
+  border:1px solid rgba(170,230,255,.5);background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.05) 50%,rgba(25,167,230,.18));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+.mp-ic:hover{background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(120,220,255,.25) 50%,rgba(25,167,230,.4))}
+.mp-ic svg{width:16px;height:16px;fill:none;stroke:#dff8ff;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 3px rgba(120,230,255,.8))}
+
+/* velká kulatá „orb“ tlačítka */
+.mp-orb{position:relative;flex:none;display:grid;place-items:center;width:64px;height:64px;padding:0;border-radius:50%;cursor:pointer;
+  border:1px solid rgba(0,10,25,.85);
+  background:radial-gradient(circle at 50% 118%,rgba(60,215,255,1) 0%,rgba(14,118,210,.95) 34%,rgba(4,30,72,1) 68%,#020c1c 100%);
+  box-shadow:0 0 0 3px rgba(200,242,255,.55),0 0 calc(8px + var(--beat)*22px) rgba(50,200,255,calc(.4 + var(--beat)*.6)),inset 0 -6px 12px rgba(90,225,255,.55)}
+.mp-orb::before{content:"";position:absolute;left:14%;right:14%;top:5%;height:46%;border-radius:50% 50% 45% 45%;
+  background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.08))}
+.mp-orb svg{position:relative;width:40%;height:40%;fill:#f2fdff;filter:drop-shadow(0 0 5px rgba(120,230,255,.95))}
+.mp-orb.sm{width:46px;height:46px;box-shadow:0 0 0 2px rgba(200,242,255,.5),0 0 calc(6px + var(--beat)*16px) rgba(50,200,255,calc(.35 + var(--beat)*.6)),inset 0 -5px 10px rgba(90,225,255,.55)}
+.mp-orb.nav{width:40px;height:40px;background:radial-gradient(circle at 50% 118%,rgba(60,215,255,.75) 0%,rgba(14,90,170,.9) 40%,#041a38 80%)}
+.mp .i-pause{display:none}
+.mp.playing .i-play{display:none}
+.mp.playing .i-pause{display:block}
+
+/* plný přehrávač */
+.mp-full{position:absolute;left:0;bottom:0;width:min(360px,calc(100vw - 24px));border-radius:20px;padding:8px 10px 10px;
+  transform-origin:0 100%;transition:opacity .25s,transform .35s cubic-bezier(.2,.9,.3,1.15),visibility 0s}
+.mp-full>*{position:relative}
+.mp[data-state="mini"] .mp-full{opacity:0;transform:scale(.18);visibility:hidden;pointer-events:none;transition:opacity .2s,transform .3s,visibility 0s .3s}
+.mp[data-state="full"] .mp-mini{opacity:0;transform:scale(.6);pointer-events:none}
+.mp-top{display:flex;align-items:center;gap:8px;padding:2px 2px 8px}
+.mp-top .lbl{flex:1;font:400 10px/1 var(--tiny);letter-spacing:.08em;text-transform:uppercase;color:#8fe4ff}
+.mp-top .ix{font:400 18px/1 var(--lcd);color:#bff3ff}
+.mp-screen{position:relative;height:132px;border-radius:14px;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 110%,rgba(25,167,230,.35),rgba(2,10,22,0) 60%),linear-gradient(180deg,#020a16,#061a30);
+  box-shadow:inset 0 0 0 1px rgba(120,210,255,.35),inset 0 2px 12px rgba(0,0,0,.8)}
+.mp-viz{position:absolute;inset:0;width:100%;height:100%;display:block}
+.mp-screen::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,0) 40%),repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 1px,transparent 1px 3px)}
+.mp-meta{position:absolute;left:10px;right:10px;top:8px;z-index:1;pointer-events:none}
+.mp-meta b{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:900 17px/1.15 var(--sans);color:#fff;text-shadow:0 0 8px rgba(80,210,255,.9),0 1px 0 #000}
+.mp-meta span{font:400 10px/1.4 var(--tiny);letter-spacing:.06em;text-transform:uppercase;color:#8fe4ff}
+.mp-seek{display:flex;align-items:center;gap:8px;margin-top:8px;font:400 18px/1 var(--lcd);color:#bff3ff;text-shadow:0 0 6px rgba(80,220,255,.6)}
+.mp-seek output{min-width:36px;text-align:center}
+.mp-ctrl{display:flex;align-items:center;gap:10px;margin-top:6px}
+.mp-vol{flex:1;display:flex;align-items:center;gap:6px;min-width:0}
+.mp-vol svg{flex:none;width:18px;height:18px;fill:#dff8ff;filter:drop-shadow(0 0 3px rgba(120,230,255,.8))}
+.mp-range{--p:0%;-webkit-appearance:none;appearance:none;flex:1;min-width:0;width:100%;height:20px;margin:0;background:transparent;cursor:pointer}
+.mp-range::-webkit-slider-runnable-track{height:8px;border-radius:99px;
+  background:linear-gradient(180deg,#b5f4ff,#2cb8f6 50%,#0a7ed0 51%,#45ccff) 0 0/var(--p) 100% no-repeat,linear-gradient(180deg,#01060d,#0e2540);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.2)}
+.mp-range::-moz-range-track{height:8px;border-radius:99px;
+  background:linear-gradient(180deg,#b5f4ff,#2cb8f6 50%,#0a7ed0 51%,#45ccff) 0 0/var(--p) 100% no-repeat,linear-gradient(180deg,#01060d,#0e2540);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.2)}
+.mp-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;margin-top:-5px;border-radius:50%;border:1px solid rgba(2,40,90,.9);
+  background:radial-gradient(circle at 36% 30%,#fff 0 16%,#c6f5ff 30%,#2cb8f6 64%,#0758a2 100%);box-shadow:0 0 8px rgba(90,215,255,.95)}
+.mp-range::-moz-range-thumb{width:18px;height:18px;border-radius:50%;border:1px solid rgba(2,40,90,.9);
+  background:radial-gradient(circle at 36% 30%,#fff 0 16%,#c6f5ff 30%,#2cb8f6 64%,#0758a2 100%);box-shadow:0 0 8px rgba(90,215,255,.95)}
+.mp-range:focus-visible{outline:2px solid #8fe4ff;outline-offset:2px;border-radius:99px}
+.mp-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:4px}
+.mp-list button{display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:8px;width:100%;padding:7px 10px;border-radius:10px;cursor:pointer;text-align:left;
+  border:1px solid transparent;background:rgba(255,255,255,.04)}
+.mp-list button:hover{background:rgba(120,210,255,.12)}
+.mp-list .n{font:400 18px/1 var(--lcd);color:#8fe4ff}
+.mp-list .t{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:800 14px/1.2 var(--sans)}
+.mp-list .t small{display:block;font:400 9px/1.4 var(--tiny);letter-spacing:.05em;text-transform:uppercase;color:#8fbfd4}
+.mp-list .d{font:400 17px/1 var(--lcd);color:#9fd8ea}
+.mp-list .on button{border-color:rgba(150,225,255,.6);background:linear-gradient(180deg,rgba(120,215,255,.32),rgba(25,140,220,.18) 50%,rgba(25,167,230,.28));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 10px rgba(40,190,255,.3)}
+.mp-list .on .n{color:#d6ff8a;text-shadow:0 0 6px rgba(190,255,100,.7)}
+
+@media (max-width:899px){
+  body.has-mp .dock{padding-left:162px}
+  body.mp-open .dock{transform:translateY(120%)}
+}
+@media (min-width:900px){
+  .mp{left:24px;bottom:24px}
+  .mp-mini-title{display:block}
+}
+@media (prefers-reduced-motion:reduce){ .mp-mini-title span{animation:none;padding-left:0} }
+
 /* ===== desktop ===== */
 @media (min-width:900px){
   .wrap{padding-inline:32px}
@@ -458,6 +554,54 @@ a.gum:active{transform:translateY(1px)}
   <button class="glassbtn js-share" type="button" aria-label="Sdílet odkaz">↗</button>
 </nav>
 
+<aside class="mp" id="mp" data-state="mini" aria-label="Hudební přehrávač">
+  <audio id="mp-audio" preload="none"></audio>
+
+  <div class="mp-mini mp-glass">
+    <button class="mp-orb sm js-mp-play" type="button" aria-label="Přehrát hudbu">
+      <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+    </button>
+    <canvas class="mp-mini-viz" aria-hidden="true"></canvas>
+    <div class="mp-mini-title" aria-hidden="true"><span class="js-mp-mq"></span></div>
+    <button class="mp-ic js-mp-open" type="button" aria-label="Rozbalit přehrávač" aria-expanded="false">
+      <svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="mp-full mp-glass" role="region" aria-label="Přehrávač">
+    <div class="mp-top">
+      <span class="lbl">now playing</span>
+      <span class="ix js-mp-ix">1/3</span>
+      <button class="mp-ic js-mp-close" type="button" aria-label="Zmenšit přehrávač">
+        <svg viewBox="0 0 24 24"><path d="M6 17h12"/></svg>
+      </button>
+    </div>
+    <div class="mp-screen">
+      <canvas class="mp-viz" aria-hidden="true"></canvas>
+      <div class="mp-meta"><b class="js-mp-title"></b><span class="js-mp-artist"></span></div>
+    </div>
+    <div class="mp-seek">
+      <output class="js-mp-cur">0:00</output>
+      <input class="mp-range js-mp-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Pozice ve skladbě">
+      <output class="js-mp-dur">0:00</output>
+    </div>
+    <div class="mp-ctrl">
+      <button class="mp-orb nav js-mp-prev" type="button" aria-label="Předchozí skladba"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM9.5 12L19 5v14z"/></svg></button>
+      <button class="mp-orb js-mp-play" type="button" aria-label="Přehrát hudbu">
+        <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="i-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      </button>
+      <button class="mp-orb nav js-mp-next" type="button" aria-label="Další skladba"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM14.5 12L5 19V5z"/></svg></button>
+      <div class="mp-vol">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h4l5-4v14l-5-4H3zM15 8.5a5 5 0 010 7l-1.2-1.2a3.3 3.3 0 000-4.6zM17.6 6a8.6 8.6 0 010 12l-1.2-1.2a6.9 6.9 0 000-9.6z"/></svg>
+        <input class="mp-range js-mp-vol" type="range" min="0" max="100" value="85" aria-label="Hlasitost">
+      </div>
+    </div>
+    <ol class="mp-list js-mp-list"></ol>
+  </div>
+</aside>
+
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Fotka">
   <button class="x" type="button" aria-label="Zavřít">✕</button>
   <button class="prev" type="button" aria-label="Předchozí fotka">←</button>
@@ -569,6 +713,202 @@ a.gum:active{transform:translateY(1px)}
     new IntersectionObserver(function(en){ heroVis = en[0].isIntersecting; upd(); }).observe(document.querySelector(".hero"));
     new IntersectionObserver(function(en){ ctaVis = en[0].isIntersecting; upd(); }).observe(document.querySelector(".cta"));
   }
+})();
+</script>
+<script>
+(function(){
+  /* ===== playlist (pořadí = pořadí přehrávání) ===== */
+  var TRACKS = [
+    { src: "audio/01-xerxes-circle-of-shit.mp3", title: "Circle of Shit", artist: "Xerxes", dur: 111 },
+    { src: "audio/02-nasilnik-kleptoman.mp3", title: "Kleptoman", artist: "Násilník", dur: 215 },
+    { src: "audio/03-kde-je-tyler-outro.mp3", title: "Kde je Tyler (outro)", artist: "Tyler Durden", dur: 128 }
+  ];
+  var mp = document.getElementById("mp"), au = document.getElementById("mp-audio");
+  if (!mp || !au) return;
+  var $ = function(s){ return mp.querySelector(s); }, $$ = function(s){ return Array.prototype.slice.call(mp.querySelectorAll(s)); };
+  var seek = $(".js-mp-seek"), vol = $(".js-mp-vol"), list = $(".js-mp-list");
+  var cur = 0, ctx = null, an = null, freq = null, noWebAudio = false, seeking = false;
+  document.body.classList.add("has-mp");
+
+  function fmt(s){ s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ":" + ("0" + s % 60).slice(-2); }
+  function fill(r){ r.style.setProperty("--p", (r.value - r.min) / (r.max - r.min) * 100 + "%"); }
+
+  TRACKS.forEach(function(t, k){
+    var li = document.createElement("li");
+    li.innerHTML = '<button type="button"><span class="n">0' + (k + 1) + '</span><span class="t">' + t.title + '<small>' + t.artist + '</small></span><span class="d">' + fmt(t.dur) + '</span></button>';
+    li.querySelector("button").addEventListener("click", function(){ load(k, true); });
+    list.appendChild(li);
+  });
+
+  function ui(){
+    var t = TRACKS[cur];
+    $(".js-mp-title").textContent = t.title;
+    $(".js-mp-artist").textContent = t.artist;
+    $(".js-mp-ix").textContent = (cur + 1) + "/" + TRACKS.length;
+    $(".js-mp-mq").innerHTML = t.artist + " — " + t.title + " &nbsp; <small>▶ " + (cur + 1) + "/" + TRACKS.length + "</small>";
+    $(".js-mp-dur").textContent = fmt(t.dur);
+    $$(".mp-list li").forEach(function(li, k){ li.classList.toggle("on", k === cur); });
+    if ("mediaSession" in navigator) {
+      try { navigator.mediaSession.metadata = new MediaMetadata({ title: t.title, artist: t.artist, album: "1+kk se zahradou · Mníšek" }); } catch (e) {}
+    }
+  }
+  function load(k, play){
+    cur = (k + TRACKS.length) % TRACKS.length;
+    au.src = TRACKS[cur].src; seek.value = 0; fill(seek); $(".js-mp-cur").textContent = "0:00";
+    ui(); if (play) start();
+  }
+  function setupAudio(){
+    if (ctx || noWebAudio) return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      ctx = new AC();
+      var src = ctx.createMediaElementSource(au);
+      an = ctx.createAnalyser(); an.fftSize = 256; an.smoothingTimeConstant = .8;
+      src.connect(an); an.connect(ctx.destination);
+      freq = new Uint8Array(an.frequencyBinCount);
+    } catch (e) { noWebAudio = true; ctx = null; an = null; }
+  }
+  function start(){
+    /* iPhone: hrát i při zapnutém tichém režimu */
+    try { if (navigator.audioSession) navigator.audioSession.type = "playback"; } catch (e) {}
+    setupAudio();
+    if (ctx && ctx.state === "suspended") ctx.resume();
+    var p = au.play(); if (p && p.catch) p.catch(function(){});
+  }
+  function toggle(){ if (au.paused) start(); else au.pause(); }
+
+  $$(".js-mp-play").forEach(function(b){ b.addEventListener("click", toggle); });
+  $(".js-mp-prev").addEventListener("click", function(){ if (au.currentTime > 3) au.currentTime = 0; else load(cur - 1, !au.paused); });
+  $(".js-mp-next").addEventListener("click", function(){ load(cur + 1, !au.paused); });
+  function setState(s){
+    mp.dataset.state = s;
+    document.body.classList.toggle("mp-open", s === "full");
+    $(".js-mp-open").setAttribute("aria-expanded", s === "full");
+    if (s === "full") setTimeout(function(){ $(".js-mp-close").focus({ preventScroll: true }); }, 50);
+  }
+  $(".js-mp-open").addEventListener("click", function(){ setState("full"); });
+  $(".js-mp-close").addEventListener("click", function(){ setState("mini"); $(".js-mp-open").focus({ preventScroll: true }); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && mp.dataset.state === "full" && document.getElementById("lb").hidden) setState("mini"); });
+
+  au.addEventListener("play", function(){ mp.classList.add("playing"); $$(".js-mp-play").forEach(function(b){ b.setAttribute("aria-label", "Pozastavit hudbu"); }); });
+  au.addEventListener("pause", function(){ mp.classList.remove("playing"); $$(".js-mp-play").forEach(function(b){ b.setAttribute("aria-label", "Přehrát hudbu"); }); });
+  au.addEventListener("ended", function(){ load(cur + 1, true); });
+  au.addEventListener("loadedmetadata", function(){ if (isFinite(au.duration)) $(".js-mp-dur").textContent = fmt(au.duration); });
+  au.addEventListener("timeupdate", function(){
+    if (seeking || !au.duration) return;
+    seek.value = Math.round(au.currentTime / au.duration * 1000); fill(seek);
+    $(".js-mp-cur").textContent = fmt(au.currentTime);
+  });
+  seek.addEventListener("input", function(){
+    seeking = true; fill(seek);
+    var d = au.duration || TRACKS[cur].dur; $(".js-mp-cur").textContent = fmt(seek.value / 1000 * d);
+  });
+  seek.addEventListener("change", function(){
+    var d = au.duration || TRACKS[cur].dur; seeking = false;
+    if (!au.duration) { start(); }
+    try { au.currentTime = seek.value / 1000 * d; } catch (e) {}
+  });
+  vol.addEventListener("input", function(){ au.volume = vol.value / 100; fill(vol); });
+  au.volume = vol.value / 100; fill(vol); fill(seek);
+
+  if ("mediaSession" in navigator) {
+    try {
+      navigator.mediaSession.setActionHandler("play", start);
+      navigator.mediaSession.setActionHandler("pause", function(){ au.pause(); });
+      navigator.mediaSession.setActionHandler("previoustrack", function(){ load(cur - 1, true); });
+      navigator.mediaSession.setActionHandler("nexttrack", function(){ load(cur + 1, true); });
+    } catch (e) {}
+  }
+
+  /* ===== vizualizér: lesklé aqua sloupce + pixelové špičky + odraz + bubliny na beat ===== */
+  var big = $(".mp-viz"), mini = $(".mp-mini-viz"), N = 28;
+  var lv = new Float32Array(N), pk = new Float32Array(N), pv = new Float32Array(N), bubbles = [], beatAvg = .2, t0 = performance.now(), last = 0;
+  function fit(c){
+    var r = c.getBoundingClientRect(), d = Math.min(window.devicePixelRatio || 1, 2);
+    var w = Math.round(r.width * d), h = Math.round(r.height * d);
+    if (w && h && (c.width !== w || c.height !== h)) { c.width = w; c.height = h; c._g = null; }
+    return d;
+  }
+  function bands(dt){
+    var playing = !au.paused, t = (performance.now() - t0) / 1000;
+    if (an && playing) {
+      an.getByteFrequencyData(freq);
+      for (var b = 0; b < N; b++) {
+        var a = Math.floor(Math.pow(b / N, 1.6) * 92) + 1, z = Math.max(a + 1, Math.floor(Math.pow((b + 1) / N, 1.6) * 92) + 1), s = 0;
+        for (var j = a; j < z; j++) s += freq[j];
+        var v = s / (z - a) / 255; v = Math.min(1, v * (1 + b / N * .6));
+        lv[b] += (v - lv[b]) * .55;
+      }
+    } else {
+      for (var b2 = 0; b2 < N; b2++) {
+        var v2 = playing
+          ? Math.max(.05, (.42 + .32 * Math.sin(t * 7.3 + b2 * .55) * Math.sin(t * 1.7 + b2 * .21) + .22 * Math.random()) * (1 - b2 / N * .45))
+          : .05 + .04 * Math.sin(t * 1.8 + b2 * .5) + .02 * Math.sin(t * 3.1 - b2 * .9);
+        lv[b2] += (v2 - lv[b2]) * Math.min(1, dt * (playing ? 14 : 4));
+      }
+    }
+  }
+  function drawBig(d, dt){
+    var c = big.getContext("2d"), W = big.width, H = big.height; if (!W) return;
+    var base = H * .74, bw = W / N;
+    c.clearRect(0, 0, W, H);
+    var bass = (lv[0] + lv[1] + lv[2] + lv[3]) / 4;
+    var g0 = c.createRadialGradient(W / 2, base, 0, W / 2, base, W * .6);
+    g0.addColorStop(0, "rgba(40,190,255," + (.12 + bass * .4) + ")"); g0.addColorStop(1, "rgba(40,190,255,0)");
+    c.fillStyle = g0; c.fillRect(0, 0, W, H);
+    if (!big._g) {
+      big._g = c.createLinearGradient(0, 50 * d, 0, base);
+      big._g.addColorStop(0, "#effdff"); big._g.addColorStop(.3, "#7fe2ff"); big._g.addColorStop(.65, "#1fa8ee"); big._g.addColorStop(1, "#0a58a8");
+      big._r = c.createLinearGradient(0, base, 0, H);
+      big._r.addColorStop(0, "rgba(60,190,255,.38)"); big._r.addColorStop(1, "rgba(60,190,255,0)");
+    }
+    for (var b = 0; b < N; b++) {
+      var h = Math.max(2 * d, lv[b] * (base - 50 * d)), x = b * bw + bw * .14, w = bw * .72;
+      c.fillStyle = big._g; c.fillRect(x, base - h, w, h);
+      c.fillStyle = "rgba(255,255,255,.35)"; c.fillRect(x, base - h, w * .3, h);
+      c.fillStyle = big._r; c.fillRect(x, base + 2 * d, w, h * .42);
+      if (h > pk[b]) { pk[b] = h; pv[b] = 0; } else { pv[b] += 60 * d * dt; pk[b] = Math.max(0, pk[b] - pv[b] * dt * 6); }
+      c.fillStyle = "#e9fbff"; c.shadowColor = "rgba(120,230,255,.9)"; c.shadowBlur = 6 * d;
+      c.fillRect(x, base - pk[b] - 4 * d, w, 2 * d); c.shadowBlur = 0;
+    }
+    c.fillStyle = "rgba(160,230,255,.5)"; c.fillRect(0, base, W, 1 * d);
+    if (!au.paused && bass > .3 && bass > beatAvg * 1.25 && bubbles.length < 24) {
+      for (var k = 0; k < 2; k++) bubbles.push({ x: Math.random() * W, y: base, r: (3 + Math.random() * 7) * d, s: (25 + Math.random() * 45) * d, w: Math.random() * 6 });
+    }
+    beatAvg = beatAvg * .94 + bass * .06;
+    for (var q = bubbles.length - 1; q >= 0; q--) {
+      var B = bubbles[q]; B.y -= B.s * dt; B.x += Math.sin((B.y + B.w * 40) / (18 * d)) * .4 * d;
+      if (B.y < -B.r) { bubbles.splice(q, 1); continue; }
+      c.beginPath(); c.arc(B.x, B.y, B.r, 0, Math.PI * 2);
+      c.strokeStyle = "rgba(200,245,255,.75)"; c.lineWidth = 1 * d; c.stroke();
+      c.fillStyle = "rgba(120,220,255,.12)"; c.fill();
+      c.beginPath(); c.arc(B.x - B.r * .35, B.y - B.r * .35, B.r * .28, 0, Math.PI * 2); c.fillStyle = "rgba(255,255,255,.85)"; c.fill();
+    }
+  }
+  function drawMini(d){
+    var c = mini.getContext("2d"), W = mini.width, H = mini.height; if (!W) return;
+    c.clearRect(0, 0, W, H);
+    var M = 5, bw = W / M;
+    if (!mini._g) { mini._g = c.createLinearGradient(0, 0, 0, H); mini._g.addColorStop(0, "#effdff"); mini._g.addColorStop(.45, "#5fd6ff"); mini._g.addColorStop(1, "#0a6fc0"); }
+    for (var b = 0; b < M; b++) {
+      var v = 0; for (var j = 0; j < 5; j++) v += lv[Math.min(N - 1, b * 5 + j)]; v /= 5;
+      var h = Math.max(2 * d, Math.min(1, v * 1.3) * H), x = b * bw + bw * .18;
+      c.fillStyle = mini._g; c.fillRect(x, H - h, bw * .64, h);
+    }
+  }
+  function loop(now){
+    var dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
+    if (!document.hidden) {
+      bands(dt);
+      var bass = (lv[0] + lv[1] + lv[2] + lv[3]) / 4;
+      mp.style.setProperty("--beat", au.paused ? 0 : Math.min(1, bass).toFixed(2));
+      var d = fit(mini); drawMini(d);
+      if (mp.dataset.state === "full") { var d2 = fit(big); drawBig(d2, dt); }
+    }
+    requestAnimationFrame(loop);
+  }
+  load(0, false);
+  requestAnimationFrame(loop);
 })();
 </script>
 </body>
