@@ -3,8 +3,8 @@ import sys, numpy as np
 from PIL import Image, ImageOps
 SRC, OUT = sys.argv[1], sys.argv[2]
 spec = [  # name, file, square crop (l, t, side), output diameter, highlight side (-1 vlevo, +1 vpravo)
-    ("spirina-1", "80d53636-image.jpg", (0, 130, 1480), 1000, 1),
-    ("spirina-2", "cada41a7-image.jpg", (40, 300, 1360), 640, -1),
+    ("spirina-1", "570b1dc2-image.jpg", (0, 40, 1187), 1000, 1),   # tvůj ořez (koupelna)
+    ("spirina-2", "6776d66c-image.jpg", (0, 0, 1264), 640, -1),    # tvůj ořez (portrét)
     ("spirina-3", "ea7706ca-image.jpg", (1050, 420, 2250), 640, -1),
 ]
 def smooth(a, b, x):

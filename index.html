@@ -264,8 +264,9 @@ a.gum:active{transform:translateY(1px)}
 
 /* ===== Spirina (FRENZY styl: štětcové písmo, bílo-limetková plocha, černý obrys, limetková kontura) ===== */
 .spirina{padding-top:100px;--beat:0}
-.sp-kicker{margin:0;font:700 clamp(22px,6.6vw,42px)/1.1 var(--px);color:var(--deep);transform:rotate(-2deg);
+.sp-kicker{margin:0;max-width:22em;font:700 clamp(21px,6vw,40px)/1.15 var(--px);color:var(--deep);transform:rotate(-2deg);
   text-shadow:0 0 6px #fff,0 0 14px #fff,3px 3px 0 rgba(25,167,230,.35)}
+.sp-kicker .car{display:inline-block;margin:0 .08em;font:400 1.3em/1 "Knewave","Arial Black",var(--sans);letter-spacing:.02em;color:#d6ff3a;-webkit-text-stroke:.07em #050505;paint-order:stroke fill;text-shadow:.05em .07em 0 #050505,0 0 .3em rgba(190,255,40,.8);transform:rotate(-4deg) translateY(.04em)}
 .sp-stage{position:relative;display:grid;place-items:center;margin-top:4px;padding:40px 0 46px}
 .sp-rays{position:absolute;left:50%;top:50%;width:min(150%,980px);aspect-ratio:1;border-radius:50%;pointer-events:none;
   background:repeating-conic-gradient(rgba(184,255,30,.3) 0 5deg,rgba(255,255,255,0) 5deg 15deg,rgba(40,170,240,.26) 15deg 20deg,rgba(255,255,255,0) 20deg 30deg);
@@ -319,6 +320,7 @@ a.gum:active{transform:translateY(1px)}
     radial-gradient(circle,rgba(190,235,255,.12) 0 54%,rgba(60,170,235,.4) 67%,rgba(255,255,255,.9) 71%,rgba(255,255,255,0) 73%);
   animation:bub-bob var(--t) ease-in-out infinite;animation-delay:var(--d)}
 @media (min-width:900px){
+  .sp-kicker{max-width:none}
   .sp-stage{padding:56px 0 64px}
   .sp-bubbles{aspect-ratio:2.15/1;margin-top:0}
   .bub-main{left:29%;top:0;width:42%}
@@ -531,7 +533,7 @@ a.gum:active{transform:translateY(1px)}
 
 <!-- ================= SPIRINA ================= -->
 <section class="spirina wrap" aria-label="Spirina">
-  <p class="sp-kicker">nejmazlivější car v okolí:</p>
+  <p class="sp-kicker">+ možnost polaskat nejmazlivější <b class="car">CAR</b> v&nbsp;okolí:</p>
   <div class="sp-stage">
     <div class="sp-rays" aria-hidden="true"></div>
     <div class="sp-glow" aria-hidden="true"></div>
@@ -565,7 +567,7 @@ a.gum:active{transform:translateY(1px)}
     </div>
   </div>
   <div class="sp-bubbles">
-    <button class="bub bub-main" type="button" data-full="img/spirina-1.jpg" data-cap="Spirina" aria-label="Zvětšit fotku: Spirina" style="--t:7s;--d:0s"><img src="img/spirina-1-b.webp" width="1000" height="1000" alt="Kočka Spirina sedí na dlažbě a kouká do foťáku" loading="lazy" decoding="async"></button>
+    <button class="bub bub-main" type="button" data-full="img/spirina-1.jpg" data-cap="Spirina" aria-label="Zvětšit fotku: Spirina" style="--t:7s;--d:0s"><img src="img/spirina-1-b.webp" width="1000" height="1000" alt="Kočka Spirina zblízka, hlazení za uchem" loading="lazy" decoding="async"></button>
     <button class="bub bub-a" type="button" data-full="img/spirina-2.jpg" data-cap="Spirina" aria-label="Zvětšit fotku: Spirina zblízka" style="--t:5.5s;--d:-2s"><img src="img/spirina-2-b.webp" width="640" height="640" alt="Kočka Spirina zblízka, žluté oči" loading="lazy" decoding="async"></button>
     <button class="bub bub-b" type="button" data-full="img/spirina-3.jpg" data-cap="Spirina" aria-label="Zvětšit fotku: Spirina v trávě" style="--t:6.2s;--d:-4s"><img src="img/spirina-3-b.webp" width="640" height="640" alt="Kočka Spirina leží v trávě mezi listy cuket" loading="lazy" decoding="async"></button>
     <i class="bub-deco d1" style="--t:6s;--d:-1s" aria-hidden="true"></i>
