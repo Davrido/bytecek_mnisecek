@@ -857,13 +857,13 @@ a.gum:active{transform:translateY(1px)}
     g0.addColorStop(0, "rgba(40,190,255," + (.12 + bass * .4) + ")"); g0.addColorStop(1, "rgba(40,190,255,0)");
     c.fillStyle = g0; c.fillRect(0, 0, W, H);
     if (!big._g) {
-      big._g = c.createLinearGradient(0, 50 * d, 0, base);
+      big._g = c.createLinearGradient(0, 62 * d, 0, base);
       big._g.addColorStop(0, "#effdff"); big._g.addColorStop(.3, "#7fe2ff"); big._g.addColorStop(.65, "#1fa8ee"); big._g.addColorStop(1, "#0a58a8");
       big._r = c.createLinearGradient(0, base, 0, H);
       big._r.addColorStop(0, "rgba(60,190,255,.38)"); big._r.addColorStop(1, "rgba(60,190,255,0)");
     }
     for (var b = 0; b < N; b++) {
-      var h = Math.max(2 * d, lv[b] * (base - 50 * d)), x = b * bw + bw * .14, w = bw * .72;
+      var h = Math.max(2 * d, lv[b] * (base - 62 * d)), x = b * bw + bw * .14, w = bw * .72;
       c.fillStyle = big._g; c.fillRect(x, base - h, w, h);
       c.fillStyle = "rgba(255,255,255,.35)"; c.fillRect(x, base - h, w * .3, h);
       c.fillStyle = big._r; c.fillRect(x, base + 2 * d, w, h * .42);
